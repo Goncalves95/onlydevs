@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   };
   
   private countdownInterval: any;
-  private launchDate = new Date('2025-02-15T00:00:00');
+  private launchDate = new Date('2025-08-15T00:00:00');
   
   // Background elements
   codeLines = [
