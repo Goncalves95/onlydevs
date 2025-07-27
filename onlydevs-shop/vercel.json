@@ -1,11 +1,14 @@
 {
   "framework": "angular",
-  "buildCommand": "ng build --configuration=production",
+  "buildCommand": "npm run build:prod",
   "outputDirectory": "dist/onlydevs-shop",
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+    "env": {
+    "NODE_ENV": "production"
+    }
 }

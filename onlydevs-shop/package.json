@@ -12,6 +12,7 @@
     "deploy:staging": "ng build --configuration=staging && vercel --prod",
     "deploy:prod": "ng build --configuration=production && vercel --prod",
     "preview": "ng build --configuration=staging && vercel",
+     "build:vercel": "npm run build:prod",
     "test": "ng test",
     "lint": "ng lint"
   },
