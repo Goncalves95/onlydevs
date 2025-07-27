@@ -1,19 +1,63 @@
+// src/styles.scss
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-html {
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
-}/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  background-color: #000000;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+// Classes utilitárias
+.text-orange { color: #ff9800 !important; }
+.text-white { color: #ffffff !important; }
+.text-black { color: #000000 !important; }
+.bg-black { background-color: #000000 !important; }
+.bg-orange { background-color: #ff9800 !important; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+}
+
+// Botões custom
+.btn-orange {
+  background-color: #ff9800;
+  color: #000000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #f57c00;
+    transform: translateY(-2px);
+  }
+}
+
+// Material overrides
+.mat-mdc-button {
+  --mdc-text-button-label-text-color: #ffffff;
+}
+
+.mat-icon {
+  color: inherit !important;
+}

@@ -1,0 +1,138 @@
+<div class="home-container">
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <!-- Brand Section -->
+          <div class="brand-section">
+            <h1 class="brand-title">
+              Only<span class="text-orange">Devs</span>
+            </h1>
+            <div class="brand-subtitle">
+              <span class="code-bracket">&lt;</span>
+              <span class="subtitle-text">Clothing for Developers</span>
+              <span class="code-bracket">/&gt;</span>
+            </div>
+          </div>
+  
+          <!-- Coming Soon Message -->
+          <div class="coming-soon-section">
+            <h2 class="coming-soon-title">Coming Soon</h2>
+            <p class="coming-soon-description">
+              We're crafting something <span class="text-orange">extraordinary</span> for you.<br>
+              Exclusive apparel that speaks the language of developers.
+            </p>
+            
+            <!-- Features Preview -->
+            <div class="features-preview">
+              <div class="feature-item">
+                <mat-icon class="feature-icon">code</mat-icon>
+                <span>Unique Designs</span>
+              </div>
+              <div class="feature-item">
+                <mat-icon class="feature-icon">high_quality</mat-icon>
+                <span>Premium Quality</span>
+              </div>
+              <div class="feature-item">
+                <mat-icon class="feature-icon">local_shipping</mat-icon>
+                <span>Fast Shipping</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Countdown Timer -->
+          <div class="countdown-section">
+            <h3 class="countdown-title">Launching in:</h3>
+            <div class="countdown-timer">
+              <div class="countdown-item">
+                <span class="countdown-number">{{ countdown.days }}</span>
+                <span class="countdown-label">Days</span>
+              </div>
+              <div class="countdown-separator">:</div>
+              <div class="countdown-item">
+                <span class="countdown-number">{{ countdown.hours }}</span>
+                <span class="countdown-label">Hours</span>
+              </div>
+              <div class="countdown-separator">:</div>
+              <div class="countdown-item">
+                <span class="countdown-number">{{ countdown.minutes }}</span>
+                <span class="countdown-label">Min</span>
+              </div>
+              <div class="countdown-separator">:</div>
+              <div class="countdown-item">
+                <span class="countdown-number">{{ countdown.seconds }}</span>
+                <span class="countdown-label">Sec</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Email Signup -->
+          <div class="signup-section">
+            <h3 class="signup-title">Be the first to know!</h3>
+            <p class="signup-description">
+              Subscribe and get early access + exclusive discount
+            </p>
+            
+            <form class="signup-form" (ngSubmit)="onSubscribe()" #signupForm="ngForm">
+              <div class="input-group">
+                <mat-icon class="input-icon">email</mat-icon>
+                <input 
+                  type="email" 
+                  placeholder="your@email.com" 
+                  class="email-input"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                  email
+                  #emailInput="ngModel">
+                <button 
+                  type="submit" 
+                  class="subscribe-btn"
+                  [disabled]="!signupForm.valid || isSubmitting">
+                  <span *ngIf="!isSubmitting">Notify Me</span>
+                  <mat-icon *ngIf="isSubmitting" class="loading-icon">refresh</mat-icon>
+                </button>
+              </div>
+              <div class="form-message" [ngClass]="messageType" *ngIf="message">
+                {{ message }}
+              </div>
+            </form>
+          </div>
+  
+          <!-- Social Media -->
+          <div class="social-section">
+            <p class="social-title">Follow us for updates:</p>
+            <div class="social-links">
+              <a href="https://instagram.com/onlydevs"  class="social-link instagram">
+                <mat-icon>camera_alt</mat-icon>
+                <span> onlydevs </span>
+              </a>
+              <a href="https://twitter.com/onlydevs"  class="social-link twitter">
+                <mat-icon>alternate_email</mat-icon>
+                <span>onlydevs</span>
+              </a>
+              <a href="https://linkedin.com/company/onlydevs"  class="social-link linkedin">
+                <mat-icon>business</mat-icon>
+                <span>OnlyDevs</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Background Elements -->
+      <div class="background-elements">
+        <div class="code-rain">
+          <div class="code-line" *ngFor="let line of codeLines; let i = index" 
+               [style.animation-delay.s]="i * 0.5">
+            {{ line }}
+          </div>
+        </div>
+        <div class="floating-icons">
+          <mat-icon class="floating-icon" *ngFor="let icon of floatingIcons; let i = index"
+                    [style.animation-delay.s]="i * 2">
+            {{ icon }}
+          </mat-icon>
+        </div>
+      </div>
+    </section>
+  </div>

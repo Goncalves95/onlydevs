@@ -1,1 +1,55 @@
-<p>header works!</p>
+<header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <!-- Logo -->
+          <div class="logo">
+            <a routerLink="/" class="logo-link">
+              <span class="logo-text">Only<span class="text-orange">Devs</span></span>
+            </a>
+          </div>
+  
+          <!-- Navigation Menu -->
+          <div class="nav-menu" [class.active]="isMenuOpen">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/products" class="nav-link" routerLinkActive="active">
+                  Products
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/about" class="nav-link" routerLinkActive="active">
+                  About
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/contact" class="nav-link" routerLinkActive="active">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+  
+          <!-- Cart & Actions -->
+          <div class="nav-actions">
+            <button class="cart-btn" (click)="openCart()">
+              <mat-icon>shopping_cart</mat-icon>
+              <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+            </button>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
