@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "products": "Prodotti",
+    "cart": "Carrello",
+    "login": "Accedi",
+    "logout": "Esci",
+    "account": "Account",
+    "orders": "Ordini"
+  },
+  "hero": {
+    "tagline": "$ npm install @onlydevs/swag",
+    "title": "OnlyDevs",
+    "subtitle": "Merch e accessori per sviluppatori, ingegneri DevOps e appassionati di infrastrutture.",
+    "cta": "Acquista ora"
+  },
+  "products": {
+    "title": "Prodotti",
+    "all": "Tutti",
+    "merch": "Merch",
+    "tech": "Tech",
+    "stickers": "Sticker",
+    "addToCart": "Aggiungi al carrello",
+    "selectSize": "Seleziona taglia",
+    "selectColor": "Seleziona colore",
+    "outOfStock": "Esaurito",
+    "comingSoon": "Prodotti in arrivo — collega Printful per iniziare",
+    "currency": "Valuta",
+    "loading": "Caricamento prodotti…",
+    "noResults": "Nessun prodotto trovato in questa categoria."
+  },
+  "cart": {
+    "title": "Il tuo carrello",
+    "empty": "Il carrello è vuoto.",
+    "continueShopping": "Continua lo shopping",
+    "remove": "Rimuovi",
+    "quantity": "Qtà",
+    "subtotal": "Subtotale",
+    "checkout": "Procedi al pagamento",
+    "items": "{count, plural, =0 {Nessun articolo} =1 {1 articolo} other {# articoli}}"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shipping": "Indirizzo di spedizione",
+    "payment": "Pagamento",
+    "review": "Rivedi l'ordine",
+    "placeOrder": "Effettua l'ordine",
+    "processing": "Elaborazione…"
+  },
+  "auth": {
+    "signIn": "Accedi",
+    "signInSubtitle": "Usa la tua email o il tuo account Google per continuare.",
+    "emailPlaceholder": "tu@esempio.com",
+    "sendMagicLink": "Invia magic link",
+    "continueWithGoogle": "Continua con Google",
+    "or": "oppure",
+    "checkEmail": "Controlla la tua email — abbiamo inviato un magic link.",
+    "error": "Errore di autenticazione. Riprova."
+  },
+  "footer": {
+    "tagline": "Fatto da dev, per dev.",
+    "privacy": "Privacy Policy",
+    "terms": "Termini di servizio",
+    "contact": "Contatti",
+    "rights": "© {year} OnlyDevs. Tutti i diritti riservati."
+  },
+  "errors": {
+    "notFound": "Pagina non trovata",
+    "notFoundDesc": "La pagina che stai cercando non esiste.",
+    "serverError": "Qualcosa è andato storto",
+    "serverErrorDesc": "Si è verificato un errore imprevisto. Riprova.",
+    "backHome": "Torna alla home"
+  },
+  "gdpr": {
+    "message": "Utilizziamo solo cookie essenziali per il funzionamento del negozio. Nessun tracciamento, nessuna pubblicità.",
+    "accept": "Accetta",
+    "learnMore": "Scopri di più",
+    "privacyLink": "Privacy Policy"
+  }
+}

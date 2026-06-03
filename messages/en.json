@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "products": "Products",
+    "cart": "Cart",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "account": "Account",
+    "orders": "Orders"
+  },
+  "hero": {
+    "tagline": "$ npm install @onlydevs/swag",
+    "title": "OnlyDevs",
+    "subtitle": "Merch and accessories built for developers, DevOps engineers, and infrastructure nerds.",
+    "cta": "Shop Now"
+  },
+  "products": {
+    "title": "Products",
+    "all": "All",
+    "merch": "Merch",
+    "tech": "Tech",
+    "stickers": "Stickers",
+    "addToCart": "Add to cart",
+    "selectSize": "Select size",
+    "selectColor": "Select color",
+    "outOfStock": "Out of stock",
+    "comingSoon": "Products coming soon — connect Printful to get started",
+    "currency": "Currency",
+    "loading": "Loading products…",
+    "noResults": "No products found in this category."
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue shopping",
+    "remove": "Remove",
+    "quantity": "Qty",
+    "subtotal": "Subtotal",
+    "checkout": "Proceed to checkout",
+    "items": "{count, plural, =0 {No items} =1 {1 item} other {# items}}"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shipping": "Shipping address",
+    "payment": "Payment",
+    "review": "Review order",
+    "placeOrder": "Place order",
+    "processing": "Processing…"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signInSubtitle": "Use your email or Google account to continue.",
+    "emailPlaceholder": "you@example.com",
+    "sendMagicLink": "Send magic link",
+    "continueWithGoogle": "Continue with Google",
+    "or": "or",
+    "checkEmail": "Check your email — we sent a magic link.",
+    "error": "Authentication error. Please try again."
+  },
+  "footer": {
+    "tagline": "Built by devs, for devs.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "rights": "© {year} OnlyDevs. All rights reserved."
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "notFoundDesc": "The page you're looking for doesn't exist.",
+    "serverError": "Something went wrong",
+    "serverErrorDesc": "An unexpected error occurred. Please try again.",
+    "backHome": "Back to home"
+  },
+  "gdpr": {
+    "message": "We use only essential cookies to keep the store working. No tracking, no ads.",
+    "accept": "Accept",
+    "learnMore": "Learn more",
+    "privacyLink": "Privacy Policy"
+  }
+}

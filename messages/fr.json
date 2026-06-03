@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "products": "Produits",
+    "cart": "Panier",
+    "login": "Se connecter",
+    "logout": "Se déconnecter",
+    "account": "Compte",
+    "orders": "Commandes"
+  },
+  "hero": {
+    "tagline": "$ npm install @onlydevs/swag",
+    "title": "OnlyDevs",
+    "subtitle": "Merch et accessoires pour les développeurs, ingénieurs DevOps et passionnés d'infrastructure.",
+    "cta": "Acheter maintenant"
+  },
+  "products": {
+    "title": "Produits",
+    "all": "Tous",
+    "merch": "Merch",
+    "tech": "Tech",
+    "stickers": "Stickers",
+    "addToCart": "Ajouter au panier",
+    "selectSize": "Choisir la taille",
+    "selectColor": "Choisir la couleur",
+    "outOfStock": "Rupture de stock",
+    "comingSoon": "Produits bientôt disponibles — connectez Printful pour commencer",
+    "currency": "Devise",
+    "loading": "Chargement des produits…",
+    "noResults": "Aucun produit trouvé dans cette catégorie."
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide.",
+    "continueShopping": "Continuer les achats",
+    "remove": "Supprimer",
+    "quantity": "Qté",
+    "subtotal": "Sous-total",
+    "checkout": "Passer à la caisse",
+    "items": "{count, plural, =0 {Aucun article} =1 {1 article} other {# articles}}"
+  },
+  "checkout": {
+    "title": "Paiement",
+    "shipping": "Adresse de livraison",
+    "payment": "Paiement",
+    "review": "Vérifier la commande",
+    "placeOrder": "Passer la commande",
+    "processing": "Traitement…"
+  },
+  "auth": {
+    "signIn": "Se connecter",
+    "signInSubtitle": "Utilisez votre e-mail ou votre compte Google pour continuer.",
+    "emailPlaceholder": "vous@exemple.com",
+    "sendMagicLink": "Envoyer le lien magique",
+    "continueWithGoogle": "Continuer avec Google",
+    "or": "ou",
+    "checkEmail": "Vérifiez vos e-mails — nous avons envoyé un lien magique.",
+    "error": "Erreur d'authentification. Veuillez réessayer."
+  },
+  "footer": {
+    "tagline": "Fait par des devs, pour des devs.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contact",
+    "rights": "© {year} OnlyDevs. Tous droits réservés."
+  },
+  "errors": {
+    "notFound": "Page introuvable",
+    "notFoundDesc": "La page que vous recherchez n'existe pas.",
+    "serverError": "Une erreur s'est produite",
+    "serverErrorDesc": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+    "backHome": "Retour à l'accueil"
+  },
+  "gdpr": {
+    "message": "Nous utilisons uniquement des cookies essentiels au fonctionnement de la boutique. Pas de tracking, pas de publicité.",
+    "accept": "Accepter",
+    "learnMore": "En savoir plus",
+    "privacyLink": "Politique de confidentialité"
+  }
+}
