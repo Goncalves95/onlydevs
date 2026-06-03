@@ -31,6 +31,8 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Prevent Prisma + pg from being bundled for the browser
+  serverExternalPackages: ["@prisma/adapter-pg", "pg", "pg-native"],
   headers: async () => [
     {
       source: "/(.*)",
@@ -42,6 +44,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "files.cdn.printful.com",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
       },
     ],
   },

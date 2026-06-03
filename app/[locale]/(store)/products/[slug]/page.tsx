@@ -29,7 +29,9 @@ export async function generateMetadata({ params }: Props) {
   if (!id) return {};
 
   try {
-    const { sync_product } = await getCachedProduct(id);
+    const detail = await getCachedProduct(id);
+    if (!detail) return {};
+    const { sync_product } = detail;
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
     // Build hreflang alternates for all 5 locales
@@ -67,6 +69,8 @@ export default async function ProductDetailPage({ params }: Props) {
   } catch {
     notFound();
   }
+
+  if (!detail) notFound();
 
   const { sync_product, sync_variants } = detail;
 

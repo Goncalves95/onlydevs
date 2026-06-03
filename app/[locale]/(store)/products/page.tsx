@@ -29,7 +29,10 @@ async function ProductGrid({
   category: ProductCategory | "all";
   locale: Locale;
 }) {
-  const cookieStore = await cookies();
+  const [cookieStore, t] = await Promise.all([
+    cookies(),
+    getTranslations({ locale, namespace: "products" }),
+  ]);
   const currencyCookie = cookieStore.get(CURRENCY_COOKIE)?.value;
   const currency =
     parseCurrencyCookie(currencyCookie) ?? getDefaultCurrency(locale);
@@ -68,9 +71,11 @@ async function ProductGrid({
             <h2 className="font-semibold text-sm group-hover:text-green-400 transition-colors line-clamp-2">
               {p.name}
             </h2>
-            <p className="text-xs text-zinc-500 mt-1 font-mono">
-              {formatPrice(0, currency)}
-            </p>
+            {p.lowestPriceCents && (
+              <p className="text-xs text-zinc-400 mt-1 font-mono">
+                {t("from")} {formatPrice(currency === "CHF" ? p.lowestPriceCents.chf : p.lowestPriceCents.eur, currency)}
+              </p>
+            )}
           </div>
         </Link>
       ))}

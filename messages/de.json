@@ -25,6 +25,7 @@
     "outOfStock": "Nicht vorrätig",
     "comingSoon": "Produkte kommen bald — Printful verbinden, um loszulegen",
     "currency": "Währung",
+    "from": "Ab",
     "loading": "Produkte werden geladen…",
     "noResults": "Keine Produkte in dieser Kategorie gefunden."
   },
@@ -35,7 +36,13 @@
     "remove": "Entfernen",
     "quantity": "Menge",
     "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "shippingCalc": "Wird beim Checkout berechnet",
+    "vatNote": "Inkl. MwSt.",
+    "total": "Gesamt",
     "checkout": "Zur Kasse",
+    "checkoutProcessing": "Weiterleitung zur Kasse…",
+    "checkoutError": "Checkout konnte nicht gestartet werden. Bitte erneut versuchen.",
     "items": "{count, plural, =0 {Keine Artikel} =1 {1 Artikel} other {# Artikel}}"
   },
   "checkout": {
@@ -44,7 +51,15 @@
     "payment": "Zahlung",
     "review": "Bestellung prüfen",
     "placeOrder": "Bestellung aufgeben",
-    "processing": "Verarbeitung…"
+    "processing": "Verarbeitung…",
+    "success": {
+      "title": "Bestellung bestätigt!",
+      "subtitle": "Vielen Dank für Ihre Bestellung. Wir senden Ihnen in Kürze eine Bestätigungs-E-Mail.",
+      "orderNumber": "Bestellung #{id}",
+      "estimatedDelivery": "Voraussichtliche Lieferzeit: 3–7 Werktage",
+      "viewOrders": "Bestellungen anzeigen",
+      "continueShopping": "Weiter einkaufen"
+    }
   },
   "auth": {
     "signIn": "Anmelden",

@@ -31,6 +31,7 @@
 
 # Prisma generated
 /app/generated/prisma
+/lib/generated/
 
 # Testing
 /coverage

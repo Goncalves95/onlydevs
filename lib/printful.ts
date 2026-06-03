@@ -35,6 +35,8 @@ export interface PrintfulProduct {
   thumbnail_url: string;
   is_ignored: boolean;
   category: ProductCategory;
+  /** Pre-computed from variant data. Not present in raw Printful API response. */
+  lowestPriceCents?: { chf: number; eur: number };
 }
 
 export interface PrintfulVariant {
