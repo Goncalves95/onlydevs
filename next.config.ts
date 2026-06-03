@@ -22,7 +22,7 @@ const securityHeaders = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://js.stripe.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' blob: data: https://files.cdn.printful.com",
+      "img-src 'self' blob: data: https://files.cdn.printful.com https://placehold.co",
       "font-src 'self'",
       "frame-src https://js.stripe.com",
       "connect-src 'self' https://api.stripe.com",

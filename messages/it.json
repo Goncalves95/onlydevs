@@ -78,6 +78,58 @@
     "contact": "Contatti",
     "rights": "© {year} OnlyDevs. Tutti i diritti riservati."
   },
+  "account": {
+    "nav": {
+      "orders": "Ordini",
+      "profile": "Profilo",
+      "addresses": "Indirizzi",
+      "signOut": "Disconnetti"
+    },
+    "orders": {
+      "title": "Storico ordini",
+      "empty": "Nessun ordine ancora.",
+      "shopNow": "Esplora prodotti",
+      "viewDetails": "Vedi dettagli",
+      "items": "{count, plural, =1 {1 articolo} other {# articoli}}"
+    },
+    "status": {
+      "PENDING": "In attesa",
+      "PAID": "Pagato",
+      "FULFILLED": "Elaborato",
+      "SHIPPED": "Spedito",
+      "DELIVERED": "Consegnato",
+      "CANCELLED": "Annullato",
+      "REFUNDED": "Rimborsato"
+    },
+    "orderDetail": {
+      "title": "Dettagli ordine",
+      "progress": "Avanzamento ordine",
+      "lineItems": "Articoli ordinati",
+      "shippingAddress": "Indirizzo di spedizione",
+      "tracking": "Tracciamento",
+      "noTracking": "Informazioni di tracciamento non ancora disponibili.",
+      "subtotal": "Totale parziale",
+      "shippingCost": "Spedizione",
+      "vatIncl": "IVA inclusa",
+      "total": "Totale",
+      "backToOrders": "Torna agli ordini"
+    },
+    "profile": {
+      "title": "Profilo",
+      "nameLabel": "Nome visualizzato",
+      "emailLabel": "Email",
+      "emailNote": "Gestito dal tuo provider di accesso.",
+      "saveChanges": "Salva modifiche",
+      "saved": "Salvato!",
+      "gdprTitle": "I miei dati",
+      "exportData": "Scarica i miei dati",
+      "exportNote": "Puoi richiedere i tuoi dati una volta all'ora.",
+      "deleteAccount": "Elimina il mio account",
+      "deleteWarning": "Tutti i tuoi dati personali verranno eliminati definitivamente. Questa azione non può essere annullata.",
+      "deleteCancel": "Annulla",
+      "confirmDelete": "Sì, elimina il mio account"
+    }
+  },
   "errors": {
     "notFound": "Pagina non trovata",
     "notFoundDesc": "La pagina che stai cercando non esiste.",

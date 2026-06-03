@@ -1,12 +1,20 @@
 import { prisma } from "@/lib/prisma";
 
-export async function POST(req: Request) {
-  const body = await req.json();
-
-  const { type, data } = body as {
-    type: string;
-    data: { order: { external_id: string; status: string } };
+interface PrintfulWebhookBody {
+  type: string;
+  data: {
+    order: {
+      external_id: string;
+      status: string;
+      tracking_number?: string;
+      tracking_url?: string;
+    };
   };
+}
+
+export async function POST(req: Request) {
+  const body = (await req.json()) as PrintfulWebhookBody;
+  const { type, data } = body;
 
   const externalOrderId = data?.order?.external_id;
   if (!externalOrderId) {
@@ -20,12 +28,25 @@ export async function POST(req: Request) {
         data: { status: "FULFILLED" },
       });
       break;
+
     case "order_shipped":
       await prisma.order.update({
         where: { id: externalOrderId },
-        data: { status: "SHIPPED" },
+        data: {
+          status: "SHIPPED",
+          trackingNumber: data.order.tracking_number ?? null,
+          trackingUrl: data.order.tracking_url ?? null,
+        },
       });
       break;
+
+    case "order_delivered":
+      await prisma.order.update({
+        where: { id: externalOrderId },
+        data: { status: "DELIVERED" },
+      });
+      break;
+
     default:
       break;
   }

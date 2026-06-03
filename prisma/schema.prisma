@@ -86,6 +86,8 @@ model Order {
   totalAmount     Int
   stripePaymentId String?
   printfulOrderId String?
+  trackingNumber  String?
+  trackingUrl     String?
   shippingAddress Json?
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt

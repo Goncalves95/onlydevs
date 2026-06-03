@@ -78,6 +78,58 @@
     "contact": "Contact",
     "rights": "© {year} OnlyDevs. All rights reserved."
   },
+  "account": {
+    "nav": {
+      "orders": "Orders",
+      "profile": "Profile",
+      "addresses": "Addresses",
+      "signOut": "Sign out"
+    },
+    "orders": {
+      "title": "Order History",
+      "empty": "No orders yet.",
+      "shopNow": "Browse products",
+      "viewDetails": "View details",
+      "items": "{count, plural, =1 {1 item} other {# items}}"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "PAID": "Paid",
+      "FULFILLED": "Fulfilled",
+      "SHIPPED": "Shipped",
+      "DELIVERED": "Delivered",
+      "CANCELLED": "Cancelled",
+      "REFUNDED": "Refunded"
+    },
+    "orderDetail": {
+      "title": "Order Details",
+      "progress": "Order Progress",
+      "lineItems": "Items Ordered",
+      "shippingAddress": "Shipping Address",
+      "tracking": "Tracking",
+      "noTracking": "Tracking not yet available.",
+      "subtotal": "Subtotal",
+      "shippingCost": "Shipping",
+      "vatIncl": "VAT included",
+      "total": "Total",
+      "backToOrders": "Back to orders"
+    },
+    "profile": {
+      "title": "Profile",
+      "nameLabel": "Display Name",
+      "emailLabel": "Email",
+      "emailNote": "Managed by your sign-in provider.",
+      "saveChanges": "Save changes",
+      "saved": "Saved!",
+      "gdprTitle": "Your Data",
+      "exportData": "Download my data",
+      "exportNote": "You can request a copy of your data once per hour.",
+      "deleteAccount": "Delete my account",
+      "deleteWarning": "This permanently removes all your personal data and cannot be undone.",
+      "deleteCancel": "Cancel",
+      "confirmDelete": "Yes, delete my account"
+    }
+  },
   "errors": {
     "notFound": "Page not found",
     "notFoundDesc": "The page you're looking for doesn't exist.",

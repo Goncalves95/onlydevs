@@ -78,6 +78,58 @@
     "contact": "Contact",
     "rights": "© {year} OnlyDevs. Tous droits réservés."
   },
+  "account": {
+    "nav": {
+      "orders": "Commandes",
+      "profile": "Profil",
+      "addresses": "Adresses",
+      "signOut": "Se déconnecter"
+    },
+    "orders": {
+      "title": "Historique des commandes",
+      "empty": "Aucune commande pour l'instant.",
+      "shopNow": "Parcourir les produits",
+      "viewDetails": "Voir les détails",
+      "items": "{count, plural, =1 {1 article} other {# articles}}"
+    },
+    "status": {
+      "PENDING": "En attente",
+      "PAID": "Payée",
+      "FULFILLED": "Traitée",
+      "SHIPPED": "Expédiée",
+      "DELIVERED": "Livrée",
+      "CANCELLED": "Annulée",
+      "REFUNDED": "Remboursée"
+    },
+    "orderDetail": {
+      "title": "Détails de la commande",
+      "progress": "Progression",
+      "lineItems": "Articles commandés",
+      "shippingAddress": "Adresse de livraison",
+      "tracking": "Suivi",
+      "noTracking": "Aucune information de suivi pour l'instant.",
+      "subtotal": "Sous-total",
+      "shippingCost": "Livraison",
+      "vatIncl": "TVA incluse",
+      "total": "Total",
+      "backToOrders": "Retour aux commandes"
+    },
+    "profile": {
+      "title": "Profil",
+      "nameLabel": "Nom d'affichage",
+      "emailLabel": "E-mail",
+      "emailNote": "Géré par votre fournisseur d'authentification.",
+      "saveChanges": "Enregistrer",
+      "saved": "Enregistré !",
+      "gdprTitle": "Mes données",
+      "exportData": "Télécharger mes données",
+      "exportNote": "Vous pouvez demander vos données une fois par heure.",
+      "deleteAccount": "Supprimer mon compte",
+      "deleteWarning": "Toutes vos données personnelles seront définitivement supprimées. Cette action est irréversible.",
+      "deleteCancel": "Annuler",
+      "confirmDelete": "Oui, supprimer mon compte"
+    }
+  },
   "errors": {
     "notFound": "Page introuvable",
     "notFoundDesc": "La page que vous recherchez n'existe pas.",

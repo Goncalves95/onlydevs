@@ -78,6 +78,58 @@
     "contact": "Kontakt",
     "rights": "© {year} OnlyDevs. Alle Rechte vorbehalten."
   },
+  "account": {
+    "nav": {
+      "orders": "Bestellungen",
+      "profile": "Profil",
+      "addresses": "Adressen",
+      "signOut": "Abmelden"
+    },
+    "orders": {
+      "title": "Bestellverlauf",
+      "empty": "Noch keine Bestellungen.",
+      "shopNow": "Produkte entdecken",
+      "viewDetails": "Details ansehen",
+      "items": "{count, plural, =1 {1 Artikel} other {# Artikel}}"
+    },
+    "status": {
+      "PENDING": "Ausstehend",
+      "PAID": "Bezahlt",
+      "FULFILLED": "Bearbeitet",
+      "SHIPPED": "Versandt",
+      "DELIVERED": "Geliefert",
+      "CANCELLED": "Storniert",
+      "REFUNDED": "Erstattet"
+    },
+    "orderDetail": {
+      "title": "Bestelldetails",
+      "progress": "Bestellfortschritt",
+      "lineItems": "Bestellte Artikel",
+      "shippingAddress": "Lieferadresse",
+      "tracking": "Sendungsverfolgung",
+      "noTracking": "Noch keine Tracking-Informationen verfügbar.",
+      "subtotal": "Zwischensumme",
+      "shippingCost": "Versand",
+      "vatIncl": "Inkl. MwSt.",
+      "total": "Gesamt",
+      "backToOrders": "Zurück zu den Bestellungen"
+    },
+    "profile": {
+      "title": "Profil",
+      "nameLabel": "Anzeigename",
+      "emailLabel": "E-Mail",
+      "emailNote": "Wird von Ihrem Anmeldeanbieter verwaltet.",
+      "saveChanges": "Änderungen speichern",
+      "saved": "Gespeichert!",
+      "gdprTitle": "Meine Daten",
+      "exportData": "Daten herunterladen",
+      "exportNote": "Sie können Ihre Daten einmal pro Stunde anfordern.",
+      "deleteAccount": "Konto löschen",
+      "deleteWarning": "Alle persönlichen Daten werden dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden.",
+      "deleteCancel": "Abbrechen",
+      "confirmDelete": "Ja, Konto löschen"
+    }
+  },
   "errors": {
     "notFound": "Seite nicht gefunden",
     "notFoundDesc": "Die gesuchte Seite existiert nicht.",

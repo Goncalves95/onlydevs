@@ -142,9 +142,9 @@ export default function CartClient({ currency, locale }: Props) {
               <span className="text-zinc-400">{t("subtotal")}</span>
               <span className="font-mono">{formatPrice(subtotal, currency)}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-zinc-400">{t("shipping")}</span>
-              <span className="text-zinc-500 text-xs">{t("shippingCalc")}</span>
+            <div className="flex justify-between items-baseline gap-3">
+              <span className="text-zinc-400 shrink-0">{t("shipping")}</span>
+              <span className="text-zinc-500 text-xs text-right">{t("shippingCalc")}</span>
             </div>
             <p className="text-xs text-zinc-600">{t("vatNote")}</p>
           </div>
