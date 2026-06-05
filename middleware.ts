@@ -70,6 +70,19 @@ export default auth(async function middleware(req: NextRequest & { auth: unknown
     return NextResponse.redirect(loginUrl);
   }
 
+  // ── 3b. Force magic-link users without a password to the profile setup page ─
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const needsPasswordSetup = session && (session as any).user?.needsPassword === true;
+  if (needsPasswordSetup) {
+    const isProfilePage = stripped.startsWith("/account/profile");
+    const isApiRoute = stripped.startsWith("/api/");
+    if (!isProfilePage && !isApiRoute) {
+      const profileUrl = new URL(`/${locale}/account/profile`, req.url);
+      profileUrl.searchParams.set("setup", "password");
+      return NextResponse.redirect(profileUrl);
+    }
+  }
+
   // ── 4. i18n routing ───────────────────────────────────────────────────────
   return intlMiddleware(req) ?? NextResponse.next();
 });

@@ -32,6 +32,7 @@ export async function DELETE() {
         image: null,
         email: `deleted-${userId}@deleted.invalid`,
         stripeId: null,
+        password: null,
       },
     }),
   ]);

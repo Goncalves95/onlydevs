@@ -4,10 +4,12 @@ import { getTranslations } from "next-intl/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import DeleteAccountButton from "@/components/DeleteAccountButton";
+import PasswordSection from "@/components/PasswordSection";
 import type { Locale } from "@/lib/i18n/routing";
 
 interface Props {
   params: Promise<{ locale: Locale }>;
+  searchParams: Promise<{ setup?: string }>;
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -16,18 +18,26 @@ export async function generateMetadata({ params }: Props) {
   return { title: t("title") };
 }
 
-export default async function ProfilePage({ params }: Props) {
+export default async function ProfilePage({ params, searchParams }: Props) {
   const { locale } = await params;
+  const { setup } = await searchParams;
+  const showSetupBanner = setup === "password";
   const session = await auth();
   if (!session?.user?.id) notFound();
   const userId = session.user.id;
 
   const [t, user] = await Promise.all([
     getTranslations({ locale, namespace: "account.profile" }),
-    prisma.user.findUnique({ where: { id: userId }, select: { name: true, email: true } }),
+    prisma.user.findUnique({
+      where: { id: userId },
+      select: { name: true, email: true, password: true },
+    }),
   ]);
 
   if (!user) notFound();
+
+  // Derive boolean only — never pass the hash to the template
+  const hasPassword = !!user.password;
 
   async function updateName(formData: FormData) {
     "use server";
@@ -38,6 +48,17 @@ export default async function ProfilePage({ params }: Props) {
 
   return (
     <section className="space-y-10 max-w-lg">
+      {showSetupBanner && (
+        <div className="flex gap-3 bg-green-500/10 border border-green-500/40 rounded-lg px-4 py-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-400 shrink-0 mt-0.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+          <p className="text-sm text-green-300">{t("setupBanner")}</p>
+        </div>
+      )}
+
       <h1 className="text-2xl font-bold">{t("title")}</h1>
 
       {/* Profile form */}
@@ -75,6 +96,9 @@ export default async function ProfilePage({ params }: Props) {
           {t("saveChanges")}
         </button>
       </form>
+
+      {/* Security section */}
+      <PasswordSection hasPassword={hasPassword} />
 
       {/* GDPR section */}
       <div className="border-t border-zinc-800 pt-8 space-y-5">

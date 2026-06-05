@@ -1,73 +1,50 @@
-import { useTranslations } from "next-intl";
-import { signIn } from "@/auth";
+import { getTranslations } from "next-intl/server";
+import LoginForm from "@/components/LoginForm";
+import type { Locale } from "@/lib/i18n/routing";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata() {
-  return { title: "Sign In" };
+interface Props {
+  params: Promise<{ locale: Locale }>;
+  searchParams: Promise<{ callbackUrl?: string; error?: string }>;
 }
 
-export default function LoginPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ callbackUrl?: string }>;
-}) {
-  const t = useTranslations("auth");
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "auth" });
+  return { title: t("signIn") };
+}
+
+export default async function LoginPage({ params, searchParams }: Props) {
+  const { locale } = await params;
+  const { callbackUrl, error } = await searchParams;
+
+  const defaultCallback = `/${locale}`;
+  const safeCallback = callbackUrl?.startsWith("/") ? callbackUrl : defaultCallback;
+
+  // Map Auth.js error codes to translation keys
+  const initialError = error
+    ? error === "OAuthAccountNotLinked"
+      ? "This email is already linked to another sign-in method."
+      : error === "AccessDenied"
+      ? "Access denied."
+      : error === "Verification"
+      ? "The magic link has expired. Please request a new one."
+      : null
+    : null;
 
   return (
-    <main className="flex min-h-screen items-center justify-center px-6">
+    <main className="flex min-h-[calc(100vh-60px)] items-center justify-center px-6 py-12">
       <div className="w-full max-w-sm">
-        <h1 className="text-2xl font-bold mb-2">{t("signIn")}</h1>
-        <p className="text-zinc-400 text-sm mb-8">{t("signInSubtitle")}</p>
-
-        <form
-          action={async (formData: FormData) => {
-            "use server";
-            const params = await searchParams;
-            await signIn("resend", {
-              email: formData.get("email") as string,
-              redirectTo: params.callbackUrl ?? "/",
-            });
-          }}
-          className="space-y-4"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder={t("emailPlaceholder")}
-            required
-            className="w-full bg-zinc-900 border border-zinc-700 rounded-md px-4 py-2.5 text-sm focus:outline-none focus:border-green-500 transition-colors"
-          />
-          <button
-            type="submit"
-            className="w-full bg-green-500 hover:bg-green-600 text-black font-semibold py-2.5 rounded-md text-sm transition-colors"
-          >
-            {t("sendMagicLink")}
-          </button>
-        </form>
-
-        <div className="my-6 flex items-center gap-3">
-          <hr className="flex-1 border-zinc-800" />
-          <span className="text-zinc-500 text-xs">{t("or")}</span>
-          <hr className="flex-1 border-zinc-800" />
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-bold mb-1">Welcome back</h1>
+          <p className="text-zinc-400 text-sm">Sign in or create your OnlyDevs account.</p>
         </div>
-
-        <form
-          action={async () => {
-            "use server";
-            const params = await searchParams;
-            await signIn("google", {
-              redirectTo: params.callbackUrl ?? "/",
-            });
-          }}
-        >
-          <button
-            type="submit"
-            className="w-full border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-semibold py-2.5 rounded-md text-sm transition-colors"
-          >
-            {t("continueWithGoogle")}
-          </button>
-        </form>
+        <LoginForm
+          locale={locale}
+          callbackUrl={safeCallback}
+          initialError={initialError ?? undefined}
+        />
       </div>
     </main>
   );

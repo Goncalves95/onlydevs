@@ -25,5 +25,14 @@ export const authConfig: NextAuthConfig = {
     authorized() {
       return true;
     },
+    // Expose custom JWT claims to the session object so middleware can read them.
+    // This callback is Edge-safe — it only reads from the token, no Prisma.
+    session({ session, token }) {
+      if (token.needsPassword === true) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (session.user as any).needsPassword = true;
+      }
+      return session;
+    },
   },
 };
