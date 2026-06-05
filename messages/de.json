@@ -1,5 +1,8 @@
 {
   "nav": {
+    "shop": "Shop",
+    "drops": "Drops",
+    "about": "Über uns",
     "products": "Produkte",
     "cart": "Warenkorb",
     "login": "Anmelden",
