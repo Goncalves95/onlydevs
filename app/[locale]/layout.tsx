@@ -3,7 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
+import { auth } from "@/auth";
 import { routing } from "@/lib/i18n/routing";
+import { parseCurrencyCookie, getDefaultCurrency, CURRENCY_COOKIE } from "@/lib/currency";
+import NavbarWrapper from "@/components/NavbarWrapper";
+import type { Locale } from "@/lib/i18n/routing";
 import "../globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -38,7 +43,15 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  const [messages, session, cookieStore] = await Promise.all([
+    getMessages(),
+    auth(),
+    cookies(),
+  ]);
+
+  const currency =
+    parseCurrencyCookie(cookieStore.get(CURRENCY_COOKIE)?.value) ??
+    getDefaultCurrency(locale as Locale);
 
   return (
     <html
@@ -47,6 +60,11 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
+          <NavbarWrapper
+            currency={currency}
+            isAuthenticated={!!session?.user?.id}
+            locale={locale}
+          />
           {children}
         </NextIntlClientProvider>
       </body>
