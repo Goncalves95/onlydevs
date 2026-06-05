@@ -6,6 +6,7 @@ import { signOut } from "next-auth/react";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { useCartStore } from "@/lib/store/cart";
 import CurrencyToggle from "@/components/CurrencyToggle";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import type { Currency } from "@/lib/currency";
 
 interface Props {
@@ -73,7 +74,8 @@ export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: P
 
           {/* Right */}
           <div className="flex items-center gap-1 md:gap-2">
-            <div className="hidden md:block mr-1">
+            <div className="hidden md:flex items-center gap-1.5 mr-1">
+              <LocaleSwitcher locale={locale} />
               <CurrencyToggle current={currency} />
             </div>
 
@@ -168,6 +170,7 @@ export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: P
           </nav>
 
           <div className="mt-8 border-t border-zinc-800 pt-6 flex flex-col gap-4">
+            <LocaleSwitcher locale={locale} />
             <CurrencyToggle current={currency} />
 
             {isAuthenticated ? (

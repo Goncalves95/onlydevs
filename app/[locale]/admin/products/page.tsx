@@ -1,6 +1,7 @@
 import { mockProducts } from "@/lib/mock/products";
 import { getProducts } from "@/lib/printful";
 import type { PrintfulProduct } from "@/lib/printful";
+import AdminRevalidateButton from "@/components/AdminRevalidateButton";
 
 export const metadata = { title: "Admin — Products" };
 
@@ -19,7 +20,10 @@ export default async function AdminProductsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Products</h1>
-        <span className="text-zinc-500 text-sm">{products.length} products</span>
+        <div className="flex items-center gap-3">
+          <AdminRevalidateButton />
+          <span className="text-zinc-500 text-sm">{products.length} products</span>
+        </div>
       </div>
 
       {isDev && (
