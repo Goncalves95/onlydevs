@@ -24,7 +24,7 @@ const securityHeaders = [
       "default-src 'self'",
       `script-src 'self' 'unsafe-inline' https://js.stripe.com${isDev ? " 'unsafe-eval'" : ""}`,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' blob: data: https://files.cdn.printful.com https://placehold.co",
+      "img-src 'self' blob: data: https://*.cdn.printful.com https://placehold.co",
       "font-src 'self'",
       "frame-src https://js.stripe.com",
       "connect-src 'self' https://api.stripe.com",
@@ -45,7 +45,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "files.cdn.printful.com",
+        hostname: "*.cdn.printful.com",
       },
       {
         protocol: "https",
