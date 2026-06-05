@@ -31,13 +31,16 @@ function withoutLocale(pathname: string) {
 export default auth(async function proxy(req: NextRequest & { auth: unknown }) {
   const { pathname } = req.nextUrl;
 
-  // ── 1. Rate-limit API routes ──────────────────────────────────────────────
-  if (pathname.startsWith("/api/") && ratelimit) {
-    const ip =
-      req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "127.0.0.1";
-    const { success } = await ratelimit.limit(ip);
-    if (!success) {
-      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  // ── 1. API routes — never locale-prefixed ────────────────────────────────
+  // Rate-limit when Upstash is configured; always short-circuit before intl.
+  if (pathname.startsWith("/api/")) {
+    if (ratelimit) {
+      const ip =
+        req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "127.0.0.1";
+      const { success } = await ratelimit.limit(ip);
+      if (!success) {
+        return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+      }
     }
     return NextResponse.next();
   }
@@ -87,6 +90,6 @@ export default auth(async function proxy(req: NextRequest & { auth: unknown }) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 };
