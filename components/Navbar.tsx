@@ -11,10 +11,11 @@ import type { Currency } from "@/lib/currency";
 interface Props {
   currency: Currency;
   isAuthenticated: boolean;
+  isAdmin: boolean;
   locale: string;
 }
 
-export default function Navbar({ currency, isAuthenticated, locale }: Props) {
+export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: Props) {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,6 +94,16 @@ export default function Navbar({ currency, isAuthenticated, locale }: Props) {
             {/* Auth — desktop */}
             {isAuthenticated ? (
               <>
+                {isAdmin && (
+                  <Link
+                    href="/admin"
+                    className="hidden md:inline-flex items-center gap-1 text-xs font-medium text-purple-400 hover:text-purple-300 border border-purple-800 hover:border-purple-600 px-2.5 py-1 rounded-md transition-colors"
+                    title="Admin Dashboard"
+                  >
+                    <ShieldIcon />
+                    Admin
+                  </Link>
+                )}
                 <Link
                   href="/account/orders"
                   className="hidden md:block p-2 text-zinc-400 hover:text-white transition-colors"
@@ -161,6 +172,15 @@ export default function Navbar({ currency, isAuthenticated, locale }: Props) {
 
             {isAuthenticated ? (
               <>
+                {isAdmin && (
+                  <Link
+                    href="/admin"
+                    className="text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Admin Dashboard
+                  </Link>
+                )}
                 <Link
                   href="/account/orders"
                   className="text-sm text-zinc-300 hover:text-white transition-colors"
@@ -219,6 +239,14 @@ function SignOutIcon() {
       <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
       <polyline points="16 17 21 12 16 7" />
       <line x1="21" y1="12" x2="9" y2="12" />
+    </svg>
+  );
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   );
 }

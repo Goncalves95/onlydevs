@@ -65,6 +65,7 @@ export default async function LocaleLayout({
             <NavbarWrapper
               currency={currency}
               isAuthenticated={!!session?.user?.id}
+              isAdmin={session?.user?.role === "ADMIN"}
               locale={locale}
             />
             {children}

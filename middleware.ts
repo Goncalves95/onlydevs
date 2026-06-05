@@ -58,8 +58,7 @@ export default auth(async function middleware(req: NextRequest & { auth: unknown
   const locale = pathname.split("/")[1] ?? routing.defaultLocale;
 
   if (adminPaths.some((p) => stripped.startsWith(p))) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (!session || (session as any).user?.role !== "ADMIN") {
+    if (!session || session.user?.role !== "ADMIN") {
       return NextResponse.redirect(new URL(`/${locale}`, req.url));
     }
   }
@@ -71,8 +70,7 @@ export default auth(async function middleware(req: NextRequest & { auth: unknown
   }
 
   // ── 3b. Force magic-link users without a password to the profile setup page ─
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const needsPasswordSetup = session && (session as any).user?.needsPassword === true;
+  const needsPasswordSetup = session?.user?.needsPassword === true;
   if (needsPasswordSetup) {
     const isProfilePage = stripped.startsWith("/account/profile");
     const isApiRoute = stripped.startsWith("/api/");

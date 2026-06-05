@@ -65,23 +65,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user, account, trigger }) {
-      // account is only present on the initial sign-in, not on every session refresh
-      if (account && user) {
-        token.id = user.id;
+      // user is only present on the initial sign-in, not on session refreshes
+      if (user) {
+        token.id = user.id as string;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         token.role = (user as any).role ?? "CUSTOMER";
+      }
 
-        if (account.provider === "resend") {
-          try {
-            const dbUser = await prisma.user.findUnique({
-              where: { id: user.id as string },
-              select: { password: true },
-            });
-            token.needsPassword = !dbUser?.password;
-          } catch {
-            // Don't block sign-in if the password check fails
-            token.needsPassword = false;
-          }
+      // Magic-link sign-in — flag if the user has no password so we can prompt setup
+      if (account?.provider === "resend" && user) {
+        try {
+          const dbUser = await prisma.user.findUnique({
+            where: { id: user.id as string },
+            select: { password: true },
+          });
+          token.needsPassword = !dbUser?.password;
+        } catch {
+          // Don't block sign-in if the password check fails
+          token.needsPassword = false;
         }
       }
 
@@ -92,8 +93,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           select: { password: true },
         });
         if (dbUser?.password) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (token as any).needsPassword = undefined;
+          token.needsPassword = undefined;
         }
       }
 
@@ -101,11 +101,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     session({ session, token }) {
       session.user.id = token.id as string;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (session.user as any).role = token.role;
+      session.user.role = token.role as string;
       if (token.needsPassword === true) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (session.user as any).needsPassword = true;
+        session.user.needsPassword = true;
       }
       return session;
     },
