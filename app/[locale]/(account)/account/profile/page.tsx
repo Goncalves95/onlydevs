@@ -33,7 +33,7 @@ export default async function ProfilePage({ params }: Props) {
     "use server";
     const name = (formData.get("name") as string).trim().slice(0, 100);
     await prisma.user.update({ where: { id: userId }, data: { name: name || null } });
-    revalidatePath(`/${locale}/profile`);
+    revalidatePath(`/${locale}/account/profile`);
   }
 
   return (

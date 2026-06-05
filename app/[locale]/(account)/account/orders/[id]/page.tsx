@@ -27,7 +27,6 @@ interface ShippingAddress {
   country?: string;
 }
 
-// Active statuses in timeline order (excludes terminal/error states)
 const TIMELINE: OrderStatus[] = ["PENDING", "PAID", "FULFILLED", "SHIPPED", "DELIVERED"];
 
 const STATUS_STYLES: Record<OrderStatus, string> = {
@@ -65,7 +64,7 @@ export default async function OrderDetailPage({ params }: Props) {
       {/* Back link + header */}
       <div>
         <Link
-          href="/orders"
+          href="/account/orders"
           className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
         >
           ← {t("orderDetail.backToOrders")}

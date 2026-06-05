@@ -100,7 +100,7 @@ export default async function OrderHistoryPage({ params }: Props) {
 
                 {/* View details */}
                 <Link
-                  href={`/orders/${order.id}`}
+                  href={`/account/orders/${order.id}`}
                   className="text-xs text-zinc-400 hover:text-green-400 transition-colors shrink-0 underline underline-offset-4"
                 >
                   {t("orders.viewDetails")}

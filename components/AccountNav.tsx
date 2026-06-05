@@ -60,9 +60,9 @@ export default function AccountNav({ locale, labels }: Props) {
   const pathname = usePathname();
 
   const navItems = [
-    { href: "/orders" as const, label: labels.orders, icon: <IconPackage /> },
-    { href: "/profile" as const, label: labels.profile, icon: <IconUser /> },
-    { href: "/addresses" as const, label: labels.addresses, icon: <IconMapPin /> },
+    { href: "/account/orders" as const, label: labels.orders, icon: <IconPackage /> },
+    { href: "/account/profile" as const, label: labels.profile, icon: <IconUser /> },
+    { href: "/account/addresses" as const, label: labels.addresses, icon: <IconMapPin /> },
   ];
 
   const linkClass = (href: string) =>

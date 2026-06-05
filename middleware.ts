@@ -21,7 +21,7 @@ const ratelimit =
     : null;
 
 // Locale-prefixed protected paths (strip the /locale segment for matching)
-const protectedPaths = ["/orders", "/profile", "/checkout"];
+const protectedPaths = ["/account", "/orders", "/checkout"];
 const adminPaths = ["/admin"];
 
 function withoutLocale(pathname: string) {

@@ -130,7 +130,7 @@ export default async function OrderSuccessPage({ params, searchParams }: Props) 
           {t("success.continueShopping")}
         </Link>
         <Link
-          href="/orders"
+          href="/account/orders"
           className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-2.5 rounded-md text-sm transition-colors"
         >
           {t("success.viewOrders")}
