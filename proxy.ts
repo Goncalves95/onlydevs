@@ -28,7 +28,7 @@ function withoutLocale(pathname: string) {
   return pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
 }
 
-export default auth(async function middleware(req: NextRequest & { auth: unknown }) {
+export default auth(async function proxy(req: NextRequest & { auth: unknown }) {
   const { pathname } = req.nextUrl;
 
   // ── 1. Rate-limit API routes ──────────────────────────────────────────────
