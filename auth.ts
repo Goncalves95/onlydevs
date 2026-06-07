@@ -76,8 +76,11 @@ function initNextAuth() {
       ],
       callbacks: {
         async jwt({ token, user, account, trigger }) {
+          console.log("[jwt] called, user present:", !!user);
+          console.log("[jwt] account provider:", account?.provider);
           // user is only present on the initial sign-in, not on session refreshes
           if (user) {
+            console.log("[jwt] setting token.id:", user.id);
             token.id = user.id as string;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             token.role = (user as any).role ?? "CUSTOMER";
@@ -90,8 +93,10 @@ function initNextAuth() {
                 where: { id: user.id as string },
                 select: { password: true },
               });
+              console.log("[jwt] needsPassword check:", !dbUser?.password);
               token.needsPassword = !dbUser?.password;
-            } catch {
+            } catch (e) {
+              console.error("[jwt] prisma error:", e);
               // Don't block sign-in if the password check fails
               token.needsPassword = false;
             }
@@ -111,6 +116,8 @@ function initNextAuth() {
           return token;
         },
         session({ session, token }) {
+          console.log("[session] called, token.id:", token.id);
+          console.log("[session] token.role:", token.role);
           session.user.id = token.id as string;
           session.user.role = token.role as string;
           if (token.needsPassword === true) {
