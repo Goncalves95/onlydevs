@@ -134,14 +134,9 @@ export async function POST(req: Request) {
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
   const stripeCurrency = currency.toLowerCase() as "chf" | "eur";
 
-  const paymentMethodTypes: Stripe.Checkout.SessionCreateParams.PaymentMethodType[] =
-    stripeCurrency === "chf"
-      ? ["card", "twint"]
-      : ["card", "sepa_debit", "paypal"];
-
   const checkoutSession = await getStripe().checkout.sessions.create({
     mode: "payment",
-    payment_method_types: paymentMethodTypes,
+    // payment_method_types omitted → Stripe uses all methods enabled in Dashboard
     currency: stripeCurrency,
     line_items: validatedItems.map((item) => ({
       quantity: item.quantity,
