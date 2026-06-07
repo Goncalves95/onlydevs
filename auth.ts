@@ -125,6 +125,16 @@ function initNextAuth() {
           }
           return session;
         },
+        async redirect({ url, baseUrl }) {
+          console.log("[redirect] url:", url, "baseUrl:", baseUrl);
+          if (url.startsWith("/")) return `${baseUrl}${url}`;
+          try {
+            if (new URL(url).origin === new URL(baseUrl).origin) return url;
+          } catch {
+            // ignore invalid URLs
+          }
+          return baseUrl;
+        },
       },
       debug: process.env.NODE_ENV === "development",
     });
