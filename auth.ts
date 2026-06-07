@@ -53,6 +53,8 @@ function initNextAuth() {
               },
             });
 
+            console.log("[credentials] user found:", !!user);
+            console.log("[credentials] has password:", !!user?.password);
             if (!user) return null;
 
             // User exists but signed up via magic link / Google — give a specific error
@@ -63,6 +65,7 @@ function initNextAuth() {
               credentials.password as string,
               user.password
             );
+            console.log("[credentials] bcrypt result:", valid);
             if (!valid) return null;
 
             // Never expose password hash in the returned user object
