@@ -1,26 +1,20 @@
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
-import { getCachedProducts, getCachedProduct } from "@/lib/products";
+import { getCachedProduct } from "@/lib/products";
 import { getProductIdFromSlug } from "@/lib/printful";
 import { getDefaultCurrency, parseCurrencyCookie, CURRENCY_COOKIE } from "@/lib/currency";
 import VariantSelector from "@/components/VariantSelector";
 import CurrencyToggle from "@/components/CurrencyToggle";
 import { routing, type Locale } from "@/lib/i18n/routing";
 
+// cookies() requires request-time access — disable static generation.
+// TODO: restore ISR by extracting currency into a Suspense child component.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 interface Props {
   params: Promise<{ locale: Locale; slug: string }>;
-}
-
-export async function generateStaticParams() {
-  try {
-    const products = await getCachedProducts();
-    return routing.locales.flatMap((locale) =>
-      products.map((p) => ({ locale, slug: p.slug }))
-    );
-  } catch {
-    return [];
-  }
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -53,8 +47,6 @@ export async function generateMetadata({ params }: Props) {
     return {};
   }
 }
-
-export const dynamicParams = true;
 
 export default async function ProductDetailPage({ params }: Props) {
   const { locale, slug } = await params;
