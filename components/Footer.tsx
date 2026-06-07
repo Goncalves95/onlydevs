@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 
@@ -27,7 +28,13 @@ export default function Footer() {
 
           {/* ── 1. Brand ──────────────────────────────────────────────────────── */}
           <div className="space-y-4">
-            <span className="font-bold text-green-400 text-lg">OnlyDevs</span>
+            <Image
+              src="/onlydevs_logo.png"
+              alt="OnlyDevs"
+              width={200}
+              height={56}
+              className="h-22 w-auto opacity-90"
+            />
             <p className="text-xs text-green-500">{t("tagline")}</p>
             <p className="text-xs text-zinc-500 leading-relaxed">{t("description")}</p>
             <div className="flex items-center gap-3 pt-1">

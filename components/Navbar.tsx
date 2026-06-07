@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { signOut } from "next-auth/react";
 import { Link, usePathname } from "@/lib/i18n/navigation";
@@ -39,11 +40,15 @@ export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: P
         <div className="max-w-6xl mx-auto px-4 h-full flex items-center justify-between gap-4">
 
           {/* Left — logo */}
-          <Link
-            href="/products"
-            className="font-mono font-bold text-green-400 hover:text-green-300 transition-colors shrink-0"
-          >
-            OnlyDevs
+          <Link href="/products" className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
+            <Image
+              src="/onlydevs_logo.png"
+              alt="OnlyDevs"
+              width={220}
+              height={64}
+              className="h-22 w-auto"
+              priority
+            />
           </Link>
 
           {/* Center — desktop links */}
