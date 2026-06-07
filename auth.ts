@@ -9,10 +9,13 @@ import { prisma } from "@/lib/prisma";
 import { authConfig } from "@/auth.config";
 import type { PrismaClient } from "@/lib/generated/prisma/client";
 
+console.log("[auth-debug] MODULE LOAD — AUTH_SECRET present:", !!process.env.AUTH_SECRET);
+console.log("[auth-debug] AUTH_URL:", process.env.AUTH_URL ?? "(not set)");
+console.log("[auth-debug] NEXTAUTH_SECRET present:", !!process.env.NEXTAUTH_SECRET);
+console.log("[auth-debug] NEXTAUTH_URL:", process.env.NEXTAUTH_URL ?? "(not set)");
+console.log("[auth-debug] NODE_ENV:", process.env.NODE_ENV);
+
 function initNextAuth() {
-  console.log("[auth] AUTH_SECRET present:", !!process.env.AUTH_SECRET);
-  console.log("[auth] AUTH_URL:", process.env.AUTH_URL ?? "(not set)");
-  console.log("[auth] NODE_ENV:", process.env.NODE_ENV);
   try {
     return NextAuth({
       // Spread pages + callbacks.authorized from the Edge config.

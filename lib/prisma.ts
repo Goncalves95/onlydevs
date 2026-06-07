@@ -8,12 +8,14 @@ declare global {
   var prisma: PrismaClient | undefined;
 }
 
+console.log("[prisma-debug] MODULE LOAD — DATABASE_URL present:", !!process.env.DATABASE_URL);
+console.log(
+  "[prisma-debug] DATABASE_URL host:",
+  process.env.DATABASE_URL?.split("@")[1]?.split("/")[0] ?? "(none)"
+);
+console.log("[prisma-debug] globalThis.prisma cached:", !!globalThis.prisma);
+
 function createPrismaClient() {
-  console.log("[prisma] DATABASE_URL present:", !!process.env.DATABASE_URL);
-  console.log(
-    "[prisma] DATABASE_URL host:",
-    process.env.DATABASE_URL?.split("@")[1]?.split("/")[0] ?? "(none)"
-  );
   if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is not set");
   }
