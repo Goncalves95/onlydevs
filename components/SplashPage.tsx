@@ -24,7 +24,7 @@ export default function SplashPage() {
   if (!show) return null;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6 py-24">
+    <main className="flex h-screen flex-col items-center justify-center px-6 overflow-hidden">
       <div className="text-center">
         <p className="font-mono text-sm text-green-500 mb-4">{t("tagline")}</p>
         <h1 className="text-5xl font-bold tracking-tight mb-4 cursor-blink">
