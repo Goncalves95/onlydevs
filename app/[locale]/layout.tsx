@@ -9,6 +9,7 @@ import { auth } from "@/auth";
 import { routing } from "@/lib/i18n/routing";
 import { parseCurrencyCookie, getDefaultCurrency, CURRENCY_COOKIE } from "@/lib/currency";
 import NavbarWrapper from "@/components/NavbarWrapper";
+import FooterWrapper from "@/components/FooterWrapper";
 import type { Locale } from "@/lib/i18n/routing";
 import "../globals.css";
 
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
               locale={locale}
             />
             {children}
+            <FooterWrapper />
           </NextIntlClientProvider>
         </SessionProvider>
       </body>

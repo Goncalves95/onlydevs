@@ -93,10 +93,26 @@
     "noPasswordError": "Questo account non ha ancora una password. Usa 'Invia magic link' per accedere, poi imposta la password nel tuo profilo."
   },
   "footer": {
-    "tagline": "Fatto da dev, per dev.",
+    "tagline": "$ npm install @onlydevs/swag",
+    "description": "Merch per sviluppatori che consegnano.",
+    "shopTitle": "Negozio",
+    "allProducts": "Tutti i prodotti",
+    "merch": "Merch",
+    "tech": "Accessori Tech",
+    "stickers": "Sticker & Poster",
+    "drops": "Drops",
+    "supportTitle": "Supporto",
+    "faq": "FAQ",
+    "shippingReturns": "Spedizione & Resi",
+    "sizeGuide": "Guida alle taglie",
+    "contact": "Contatti",
+    "trackOrder": "Traccia ordine",
+    "legalTitle": "Legale",
     "privacy": "Privacy Policy",
     "terms": "Termini di servizio",
-    "contact": "Contatti",
+    "cookies": "Cookie Policy",
+    "gdpr": "GDPR / Diritti sui dati",
+    "comingSoon": "presto",
     "rights": "© {year} OnlyDevs. Tutti i diritti riservati."
   },
   "account": {

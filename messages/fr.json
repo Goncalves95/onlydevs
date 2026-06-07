@@ -93,10 +93,26 @@
     "noPasswordError": "Ce compte n'a pas encore de mot de passe. Utilisez 'Envoyer le lien magique' pour vous connecter, puis définissez votre mot de passe dans votre profil."
   },
   "footer": {
-    "tagline": "Fait par des devs, pour des devs.",
+    "tagline": "$ npm install @onlydevs/swag",
+    "description": "Le merch pour les développeurs qui livrent.",
+    "shopTitle": "Boutique",
+    "allProducts": "Tous les produits",
+    "merch": "Merch",
+    "tech": "Accessoires Tech",
+    "stickers": "Stickers & Affiches",
+    "drops": "Drops",
+    "supportTitle": "Support",
+    "faq": "FAQ",
+    "shippingReturns": "Livraison & Retours",
+    "sizeGuide": "Guide des tailles",
+    "contact": "Contact",
+    "trackOrder": "Suivre ma commande",
+    "legalTitle": "Légal",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
-    "contact": "Contact",
+    "cookies": "Politique des cookies",
+    "gdpr": "RGPD / Droits sur vos données",
+    "comingSoon": "bientôt",
     "rights": "© {year} OnlyDevs. Tous droits réservés."
   },
   "account": {
