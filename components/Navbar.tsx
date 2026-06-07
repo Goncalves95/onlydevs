@@ -40,7 +40,7 @@ export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: P
 
           {/* Left — logo */}
           <Link
-            href="/"
+            href="/products"
             className="font-mono font-bold text-green-400 hover:text-green-300 transition-colors shrink-0"
           >
             OnlyDevs
