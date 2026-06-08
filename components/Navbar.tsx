@@ -31,7 +31,10 @@ export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: P
     return pathname === href || pathname.startsWith(href + "/");
   }
 
-  const navLinks = [{ href: "/products", label: t("shop") }] as const;
+  const navLinks = [
+    { href: "/", label: t("home") },
+    { href: "/products", label: t("shop") },
+  ] as const;
   const comingSoonLinks = [t("drops"), t("about")] as const;
 
   return (
@@ -40,7 +43,7 @@ export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: P
         <div className="max-w-6xl mx-auto px-4 h-full flex items-center justify-between gap-4">
 
           {/* Left — logo */}
-          <Link href="/products" className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
+          <Link href="/" className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
             <Image
               src="/onlydevs_logo.png"
               alt="OnlyDevs"
