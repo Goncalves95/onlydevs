@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "~/",
     "shop": "Shop",
     "drops": "Drops",
     "about": "About",
@@ -192,5 +193,30 @@
     "accept": "Accept",
     "learnMore": "Learn more",
     "privacyLink": "Privacy Policy"
+  },
+  "home": {
+    "tagline": "$ npm install @onlydevs/swag",
+    "enterStore": "Enter Store",
+    "featuredTitle": "// featured.products",
+    "viewAll": "View all →",
+    "categoriesTitle": "// browse.by.category",
+    "categoryMerch": "Merch",
+    "categoryMerchDesc": "Hoodies, tees & more",
+    "categoryTech": "Tech",
+    "categoryTechDesc": "Bags, mugs & gear",
+    "categoryStickers": "Stickers",
+    "categoryStickersDesc": "Stickers & posters",
+    "whyTitle": "// why.onlydevs",
+    "prop1Title": "Print on demand",
+    "prop1Desc": "Made when ordered — no deadstock, no waste.",
+    "prop2Title": "Ships to Europe",
+    "prop2Desc": "Fast delivery across Switzerland and the EU.",
+    "prop3Title": "Dev approved",
+    "prop3Desc": "Designed by developers, for developers.",
+    "newsletterTitle": "// subscribe.to.drops",
+    "newsletterDesc": "Get notified when new drops go live.",
+    "newsletterPlaceholder": "your@email.com",
+    "newsletterCta": "Subscribe",
+    "newsletterNote": "No spam. Unsubscribe anytime."
   }
 }

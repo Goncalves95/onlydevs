@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "~/",
     "shop": "Shop",
     "drops": "Drops",
     "about": "Chi siamo",
@@ -186,6 +187,31 @@
     "serverError": "Qualcosa è andato storto",
     "serverErrorDesc": "Si è verificato un errore imprevisto. Riprova.",
     "backHome": "Torna alla home"
+  },
+  "home": {
+    "tagline": "$ npm install @onlydevs/swag",
+    "enterStore": "Entra nel negozio",
+    "featuredTitle": "// prodotti.in.evidenza",
+    "viewAll": "Vedi tutti →",
+    "categoriesTitle": "// sfoglia.per.categoria",
+    "categoryMerch": "Merch",
+    "categoryMerchDesc": "Felpe, t-shirt e altro",
+    "categoryTech": "Tech",
+    "categoryTechDesc": "Borse, tazze e accessori",
+    "categoryStickers": "Sticker",
+    "categoryStickersDesc": "Sticker e poster",
+    "whyTitle": "// perché.onlydevs",
+    "prop1Title": "Print on demand",
+    "prop1Desc": "Stampato su ordinazione — niente magazzino, niente sprechi.",
+    "prop2Title": "Spedizioni in Europa",
+    "prop2Desc": "Consegna rapida in Svizzera e in tutta l'UE.",
+    "prop3Title": "Approvato dai dev",
+    "prop3Desc": "Progettato da sviluppatori, per sviluppatori.",
+    "newsletterTitle": "// iscriviti.ai.drops",
+    "newsletterDesc": "Ricevi una notifica quando escono nuovi drop.",
+    "newsletterPlaceholder": "tu@esempio.com",
+    "newsletterCta": "Iscriviti",
+    "newsletterNote": "Niente spam. Cancellati quando vuoi."
   },
   "gdpr": {
     "message": "Utilizziamo solo cookie essenziali per il funzionamento del negozio. Nessun tracciamento, nessuna pubblicità.",

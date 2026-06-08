@@ -56,3 +56,28 @@ body {
   color: var(--accent);
   animation: blink 1s step-end infinite;
 }
+
+/* Splash animations */
+@keyframes splash-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes splash-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splash-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.splash-cursor {
+  animation: splash-cursor-blink 0.7s step-end infinite;
+}
+
+.splash-item {
+  opacity: 0;
+  animation: splash-fade-up 0.5s ease-out forwards;
+}
