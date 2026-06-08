@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { Link } from "@/lib/i18n/navigation";
 
 type Tab = "signin" | "register";
@@ -20,7 +19,6 @@ function isStrongPassword(pass: string) {
 
 export default function LoginForm({ locale, callbackUrl, initialError }: Props) {
   const t = useTranslations("auth");
-  const router = useRouter();
 
   const [tab, setTab] = useState<Tab>("signin");
   const [showMagicLink, setShowMagicLink] = useState(false);
@@ -51,7 +49,12 @@ export default function LoginForm({ locale, callbackUrl, initialError }: Props) 
     setLoading(true);
     setError(null);
     try {
-      const result = await signIn("credentials", { email, password, redirect: false });
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl,
+      });
       if (result?.error) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if ((result as any).code === "no_password") {
@@ -62,8 +65,7 @@ export default function LoginForm({ locale, callbackUrl, initialError }: Props) 
           setError(t("invalidCredentials"));
         }
       } else {
-        router.push(callbackUrl);
-        router.refresh();
+        window.location.href = result?.url ?? callbackUrl;
       }
     } catch {
       setError(t("invalidCredentials"));
@@ -130,8 +132,7 @@ export default function LoginForm({ locale, callbackUrl, initialError }: Props) 
       if (signInResult?.error) {
         setError(t("registrationError"));
       } else {
-        router.push(callbackUrl);
-        router.refresh();
+        window.location.href = signInResult?.url ?? callbackUrl;
       }
     } catch {
       setError(t("registrationError"));

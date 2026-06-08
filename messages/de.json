@@ -93,11 +93,27 @@
     "noPasswordError": "Dieses Konto hat noch kein Passwort. Verwende 'Magic-Link senden', um dich anzumelden, und lege dann dein Passwort in deinem Profil fest."
   },
   "footer": {
-    "tagline": "Von Devs, für Devs.",
+    "tagline": "$ npm install @onlydevs/swag",
+    "description": "Merch für Entwickler, die liefern.",
+    "shopTitle": "Shop",
+    "allProducts": "Alle Produkte",
+    "merch": "Merch",
+    "tech": "Tech Zubehör",
+    "stickers": "Sticker & Poster",
+    "drops": "Drops",
+    "supportTitle": "Support",
+    "faq": "FAQ",
+    "shippingReturns": "Versand & Rückgabe",
+    "sizeGuide": "Größenguide",
+    "contact": "Kontakt",
+    "trackOrder": "Bestellung verfolgen",
+    "legalTitle": "Rechtliches",
     "privacy": "Datenschutz",
     "terms": "Nutzungsbedingungen",
-    "contact": "Kontakt",
-    "rights": "© {year} OnlyDevs. Alle Rechte vorbehalten."
+    "cookies": "Cookie-Richtlinie",
+    "gdpr": "DSGVO / Datenrechte",
+    "comingSoon": "bald",
+    "rights": "© {year} OnlyDevs - RaigonLab. Alle Rechte vorbehalten."
   },
   "account": {
     "nav": {

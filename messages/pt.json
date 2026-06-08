@@ -93,11 +93,27 @@
     "noPasswordError": "Esta conta ainda não tem senha. Usa 'Enviar magic link' para entrares, depois define a tua senha no perfil."
   },
   "footer": {
-    "tagline": "Feito por devs, para devs.",
+    "tagline": "$ npm install @onlydevs/swag",
+    "description": "Merch para developers que entregam.",
+    "shopTitle": "Loja",
+    "allProducts": "Todos os produtos",
+    "merch": "Merch",
+    "tech": "Acessórios Tech",
+    "stickers": "Stickers & Posters",
+    "drops": "Drops",
+    "supportTitle": "Suporte",
+    "faq": "FAQ",
+    "shippingReturns": "Envios & Devoluções",
+    "sizeGuide": "Guia de tamanhos",
+    "contact": "Contacto",
+    "trackOrder": "Acompanhar encomenda",
+    "legalTitle": "Legal",
     "privacy": "Política de Privacidade",
     "terms": "Termos de Serviço",
-    "contact": "Contacto",
-    "rights": "© {year} OnlyDevs. Todos os direitos reservados."
+    "cookies": "Política de Cookies",
+    "gdpr": "RGPD / Direitos sobre dados",
+    "comingSoon": "breve",
+    "rights": "© {year} OnlyDevs - RaigonLab. Todos os direitos reservados."
   },
   "account": {
     "nav": {
