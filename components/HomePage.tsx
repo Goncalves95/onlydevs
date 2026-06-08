@@ -148,7 +148,7 @@ export default function HomePage({ featured, currency }: Props) {
           {featured.length === 0 ? (
             <p className="font-mono text-xs text-zinc-600">{tp("comingSoon")}</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {featured.map((p) => (
                 <Link
                   key={p.id}
