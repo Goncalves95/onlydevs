@@ -34,10 +34,12 @@ export async function POST(req: Request) {
 
   let email: string;
   let password: string;
+  let locale: string;
   try {
     const body = await req.json();
     email = (body.email ?? "").trim().toLowerCase();
     password = body.password ?? "";
+    locale = typeof body.locale === "string" && body.locale ? body.locale : "en";
   } catch {
     return NextResponse.json({ error: "INVALID_REQUEST" }, { status: 400 });
   }
@@ -64,5 +66,5 @@ export async function POST(req: Request) {
     select: { id: true },
   });
 
-  return NextResponse.json({ ok: true }, { status: 201 });
+  return NextResponse.json({ ok: true, redirectTo: `/${locale}` }, { status: 201 });
 }

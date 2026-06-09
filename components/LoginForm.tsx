@@ -115,7 +115,7 @@ export default function LoginForm({ locale, callbackUrl, initialError }: Props) 
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: regEmail, password: regPassword }),
+        body: JSON.stringify({ email: regEmail, password: regPassword, locale }),
       });
       const data = await res.json();
 
@@ -124,15 +124,17 @@ export default function LoginForm({ locale, callbackUrl, initialError }: Props) 
         return;
       }
 
+      const redirectTo: string = data.redirectTo ?? `/${locale}`;
       const signInResult = await signIn("credentials", {
         email: regEmail,
         password: regPassword,
         redirect: false,
+        callbackUrl: redirectTo,
       });
       if (signInResult?.error) {
         setError(t("registrationError"));
       } else {
-        window.location.href = signInResult?.url ?? callbackUrl;
+        window.location.href = redirectTo;
       }
     } catch {
       setError(t("registrationError"));
