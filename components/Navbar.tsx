@@ -34,8 +34,9 @@ export default function Navbar({ currency, isAuthenticated, isAdmin, locale }: P
   const navLinks = [
     { href: "/", label: t("home") },
     { href: "/products", label: t("shop") },
+    { href: "/about", label: t("about") },
   ] as const;
-  const comingSoonLinks = [t("drops"), t("about")] as const;
+  const comingSoonLinks = [t("drops")] as const;
 
   return (
     <>

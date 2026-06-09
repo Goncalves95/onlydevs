@@ -7,6 +7,7 @@ import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { authConfig } from "@/auth.config";
+import { sendMagicLink, sendWelcomeEmail } from "@/lib/email";
 import type { PrismaClient } from "@/lib/generated/prisma/client";
 
 console.log("[auth-debug] MODULE LOAD — AUTH_SECRET present:", !!process.env.AUTH_SECRET);
@@ -30,7 +31,15 @@ function initNextAuth() {
         }),
         Resend({
           apiKey: process.env.RESEND_API_KEY,
-          from: process.env.RESEND_FROM_EMAIL ?? "onlydevs@resend.dev",
+          from: process.env.RESEND_FROM_EMAIL ?? "OnlyDevs <noreply@onlydevs.shop>",
+          sendVerificationRequest: async ({ identifier: email, url }) => {
+            try {
+              await sendMagicLink({ to: email, url });
+            } catch (e) {
+              console.error("[auth] magic link email failed:", e);
+              throw new Error("Failed to send sign-in email. Please try again.");
+            }
+          },
         }),
         Credentials({
           credentials: {
@@ -134,6 +143,16 @@ function initNextAuth() {
             // ignore invalid URLs
           }
           return baseUrl;
+        },
+      },
+      events: {
+        async createUser({ user }) {
+          if (!user.email) return;
+          try {
+            await sendWelcomeEmail({ to: user.email, name: user.name ?? "" });
+          } catch (e) {
+            console.error("[auth] welcome email failed:", e);
+          }
         },
       },
       debug: process.env.NODE_ENV === "development",
