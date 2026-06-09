@@ -219,5 +219,31 @@
     "learnMore": "Saber mais",
     "privacyLink": "Política de Privacidade",
     "cookiePolicy": "Política de Cookies"
+  },
+  "about": {
+    "metaTitle": "Sobre — OnlyDevs",
+    "metaDesc": "Conhece a OnlyDevs, merch para developers feito por developers.",
+    "heroSubtitle": "Criamos merch para pessoas que constroem coisas.",
+    "heroBody": "A OnlyDevs é uma loja de merch focada em developers, gerida por engenheiros. Cada produto é desenhado com a mentalidade dev — limpo, funcional e um pouco nerd.",
+    "storyTitle": "A Nossa História",
+    "storyP1": "Tudo começou com uma hoodie. Especificamente, o tipo de hoodie que usarias num hackathon — escura, minimalista, sem logo corporativo.",
+    "storyP2": "Não encontrámos o que queríamos, por isso criámos. A OnlyDevs é uma loja print-on-demand desenhada e mantida por developers, para developers.",
+    "storyP3": "Sem stock parado. Sem armazém. Apenas código, bom gosto e uma chave de API do Printful.",
+    "valuesTitle": "O Que Defendemos",
+    "value1Title": "Minimal por padrão",
+    "value1Desc": "// sem excessos. designs limpos. funcional primeiro.",
+    "value2Title": "Feito sob encomenda",
+    "value2Desc": "// impresso ao ser encomendado. zero desperdício. sem stock.",
+    "value3Title": "Construído abertamente",
+    "value3Desc": "// usamos o nosso próprio stack. a enviar código diariamente.",
+    "stackTitle": "O Stack",
+    "stackNote": "// o que alimenta onlydevs.shop",
+    "locationTitle": "Onde Estamos",
+    "locationText": "// remote-first, baseados na Suíça",
+    "shipsTitle": "Envio Mundial",
+    "shipsText": "// fulfillment via Printful a partir de armazéns na UE",
+    "contactTitle": "Entra em Contacto",
+    "contactText": "Tens um pedido de funcionalidade, um bug ou simplesmente queres dizer olá? Lemos todas as mensagens.",
+    "shopCta": "Ver produtos →"
   }
 }
