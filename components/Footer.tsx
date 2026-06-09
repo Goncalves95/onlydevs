@@ -117,7 +117,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/privacy" className={linkCls}>{t("privacy")}</Link></li>
               <li><Link href="/terms" className={linkCls}>{t("terms")}</Link></li>
-              <li><ComingSoon label={t("cookies")} t={t} /></li>
+              <li><Link href="/cookies" className={linkCls}>{t("cookies")}</Link></li>
               <li><Link href="/account/profile" className={linkCls}>{t("gdpr")}</Link></li>
             </ul>
           </div>

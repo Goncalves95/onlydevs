@@ -41,8 +41,18 @@ export default function AdminSidebar() {
           </Link>
         ))}
       </nav>
-      <div className="p-4 border-t border-zinc-800 shrink-0">
-        <p className="text-xs text-zinc-700 font-mono">onlydevs admin</p>
+      <div className="p-4 border-t border-zinc-800 shrink-0 space-y-3">
+        <Link
+          href="/"
+          className="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-zinc-500 hover:text-green-400 hover:bg-zinc-900 border border-transparent transition-colors w-full"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          Back to store
+        </Link>
+        <p className="text-xs text-zinc-700 font-mono px-3">onlydevs admin</p>
       </div>
     </aside>
   );
