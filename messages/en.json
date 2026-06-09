@@ -192,7 +192,8 @@
     "message": "We use only essential cookies to keep the store working. No tracking, no ads.",
     "accept": "Accept",
     "learnMore": "Learn more",
-    "privacyLink": "Privacy Policy"
+    "privacyLink": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy"
   },
   "home": {
     "tagline": "$ npm install @onlydevs/swag",
