@@ -33,10 +33,12 @@ function initNextAuth() {
           apiKey: process.env.RESEND_API_KEY,
           from: process.env.RESEND_FROM_EMAIL ?? "OnlyDevs <noreply@onlydevs.shop>",
           sendVerificationRequest: async ({ identifier: email, url }) => {
+            console.log("[email] sending magic link to:", email);
             try {
               await sendMagicLink({ to: email, url });
+              console.log("[email] magic link sent successfully to:", email);
             } catch (e) {
-              console.error("[auth] magic link email failed:", e);
+              console.error("[email] magic link failed:", e);
               throw new Error("Failed to send sign-in email. Please try again.");
             }
           },
@@ -147,11 +149,14 @@ function initNextAuth() {
       },
       events: {
         async createUser({ user }) {
+          // Fires for OAuth and magic-link new users only (not credentials registration)
+          console.log("[email] createUser event fired for:", user.email);
           if (!user.email) return;
           try {
-            await sendWelcomeEmail({ to: user.email, name: user.name ?? "" });
+            await sendWelcomeEmail({ to: user.email, name: user.name ?? user.email });
+            console.log("[email] welcome sent successfully to:", user.email);
           } catch (e) {
-            console.error("[auth] welcome email failed:", e);
+            console.error("[email] welcome failed:", e);
           }
         },
       },

@@ -8,6 +8,8 @@ let _resend: Resend | null = null;
 
 export function getResend(): Resend {
   if (!_resend) {
+    console.log("[resend] API key present:", !!process.env.RESEND_API_KEY);
+    console.log("[resend] FROM email:", process.env.RESEND_FROM_EMAIL ?? "(using default)");
     if (!process.env.RESEND_API_KEY) throw new Error("RESEND_API_KEY is not set");
     _resend = new Resend(process.env.RESEND_API_KEY);
   }

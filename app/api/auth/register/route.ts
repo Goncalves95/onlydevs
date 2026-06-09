@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { prisma } from "@/lib/prisma";
+import { sendWelcomeEmail } from "@/lib/email";
 
 const ratelimit =
   process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
@@ -65,6 +66,15 @@ export async function POST(req: Request) {
     data: { email, password: hash },
     select: { id: true },
   });
+
+  console.log("[register] user created:", email);
+  // events.createUser does not fire for direct prisma creates — send welcome here
+  try {
+    await sendWelcomeEmail({ to: email, name: email });
+    console.log("[register] welcome email sent to:", email);
+  } catch (e) {
+    console.error("[register] welcome email failed:", e);
+  }
 
   return NextResponse.json({ ok: true, redirectTo: `/${locale}` }, { status: 201 });
 }
