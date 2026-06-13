@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { signIn } from "next-auth/react";
 import { Link } from "@/lib/i18n/navigation";
+import { isStrongPassword } from "@/lib/validation";
 
 type Tab = "signin" | "register";
 
@@ -11,10 +12,6 @@ interface Props {
   locale: string;
   callbackUrl: string;
   initialError?: string;
-}
-
-function isStrongPassword(pass: string) {
-  return pass.length >= 8 && /[A-Z]/.test(pass) && /[0-9]/.test(pass);
 }
 
 export default function LoginForm({ locale, callbackUrl, initialError }: Props) {

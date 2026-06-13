@@ -164,7 +164,7 @@ export default function CookiesPage() {
             </table>
           </div>
           <p className="text-zinc-500 mt-4 text-xs font-mono">
-            // Cart state is stored in your browser's localStorage, not in a cookie.
+            // Cart state is stored in your browser&apos;s localStorage, not in a cookie.
           </p>
         </section>
 
@@ -263,7 +263,7 @@ export default function CookiesPage() {
           <Heading n={5} slug="policy_updates" title="Policy Updates" />
           <p className="text-zinc-300">
             We may update this Cookie Policy when we change our technical stack or as legal
-            requirements evolve. The "Last updated" date at the top of this page reflects the most
+            requirements evolve. The &ldquo;Last updated&rdquo; date at the top of this page reflects the most
             recent revision. We will not introduce non-essential cookies without updating this page
             and, where required by law, obtaining your explicit consent.
           </p>

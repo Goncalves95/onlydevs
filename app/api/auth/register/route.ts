@@ -4,6 +4,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { prisma } from "@/lib/prisma";
 import { sendWelcomeEmail } from "@/lib/email";
+import { isValidEmail, isStrongPassword } from "@/lib/validation";
 
 const ratelimit =
   process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
@@ -14,13 +15,6 @@ const ratelimit =
       })
     : null;
 
-function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function isStrongPassword(pass: string) {
-  return pass.length >= 8 && /[A-Z]/.test(pass) && /[0-9]/.test(pass);
-}
 
 export async function POST(req: Request) {
   const ip =

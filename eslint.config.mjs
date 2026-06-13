@@ -13,6 +13,20 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // `//` prefix is intentional terminal-aesthetic UI text throughout the app
+      "react/jsx-no-comment-textnodes": "off",
+      // Valid mount-time patterns: setMounted, setMenuOpen(false) on route change, etc.
+      "react-hooks/set-state-in-effect": "off",
+      // Allow _-prefixed variables for intentional discard (e.g. `const { password: _, ...rest } = user`)
+      "@typescript-eslint/no-unused-vars": ["warn", {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+      }],
+    },
+  },
 ]);
 
 export default eslintConfig;
