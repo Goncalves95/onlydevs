@@ -27,8 +27,8 @@ function PCard({ bg = "#fff", noBorder = false, children }: {
 }) {
   return (
     <div
-      className={`flex items-center justify-center rounded-[5px] shrink-0 overflow-hidden ${!noBorder ? "border border-zinc-300" : ""}`}
-      style={{ background: bg, width: 52, height: 34 }}
+      className={`flex items-center justify-center rounded-[3px] shrink-0 overflow-hidden ${!noBorder ? "border border-zinc-300" : ""}`}
+      style={{ background: bg, width: 36, height: 24 }}
     >
       {children}
     </div>
@@ -40,12 +40,9 @@ function PCard({ bg = "#fff", noBorder = false, children }: {
 function TwintIcon() {
   return (
     <PCard bg="#000" noBorder>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
-        <circle cx="14" cy="17" r="8.5" fill="white" />
-        <path d="M10.5 12.5h7" stroke="#000" strokeWidth="2.2" strokeLinecap="round" />
-        <path d="M14 12.5V21.5" stroke="#000" strokeWidth="2.2" strokeLinecap="round" />
-        <text x="35" y="21" textAnchor="middle" fill="white"
-          fontSize="7.5" fontWeight="900" fontFamily="Arial,Helvetica,sans-serif" letterSpacing="0.5">
+      <svg viewBox="0 0 52 34" width="36" height="24" fill="none">
+        <text x="26" y="22" textAnchor="middle" fill="white"
+          fontSize="13" fontWeight="900" fontFamily="Arial,Helvetica,sans-serif" letterSpacing="1">
           TWINT
         </text>
       </svg>
@@ -53,23 +50,11 @@ function TwintIcon() {
   );
 }
 
-function PFPayIcon() {
-  return (
-    <PCard bg="#FECC00" noBorder>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
-        <text x="9" y="21" fill="#1A1A1A" fontSize="11.5" fontWeight="900"
-          fontFamily="Arial,Helvetica,sans-serif">PF</text>
-        <text x="27" y="21" fill="#E31837" fontSize="11.5" fontWeight="900"
-          fontFamily="Arial,Helvetica,sans-serif">Pay</text>
-      </svg>
-    </PCard>
-  );
-}
 
 function VisaIcon() {
   return (
     <PCard>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
+      <svg viewBox="0 0 52 34" width="36" height="24" fill="none">
         <text x="26" y="23" textAnchor="middle" fill="#1A1F71"
           fontSize="17" fontWeight="900" fontFamily="Arial,Helvetica,sans-serif" fontStyle="italic">
           VISA
@@ -82,7 +67,7 @@ function VisaIcon() {
 function MastercardIcon() {
   return (
     <PCard>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
+      <svg viewBox="0 0 52 34" width="36" height="24" fill="none">
         <circle cx="19.5" cy="17" r="10" fill="#EB001B" />
         <circle cx="32.5" cy="17" r="10" fill="#F79E1B" />
         <path d="M26 8.4a10 10 0 0 1 0 17.2A10 10 0 0 1 26 8.4z" fill="#FF5F00" />
@@ -94,9 +79,9 @@ function MastercardIcon() {
 function AmexIcon() {
   return (
     <PCard bg="#006FCF" noBorder>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
+      <svg viewBox="0 0 52 34" width="36" height="24" fill="none">
         <text x="26" y="21" textAnchor="middle" fill="white"
-          fontSize="11" fontWeight="900" fontFamily="Arial,Helvetica,sans-serif" letterSpacing="1.5">
+          fontSize="14" fontWeight="900" fontFamily="Arial,Helvetica,sans-serif" letterSpacing="1.5">
           AMEX
         </text>
       </svg>
@@ -104,25 +89,11 @@ function AmexIcon() {
   );
 }
 
-function PayPalIcon() {
-  return (
-    <PCard>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
-        <text x="16" y="23" textAnchor="middle" fill="#003087"
-          fontSize="15" fontWeight="900" fontFamily="Arial,Helvetica,sans-serif">P</text>
-        <text x="24" y="23" textAnchor="middle" fill="#009CDE"
-          fontSize="15" fontWeight="900" fontFamily="Arial,Helvetica,sans-serif">P</text>
-        <text x="37" y="23" textAnchor="middle" fill="#003087"
-          fontSize="9.5" fontFamily="Arial,Helvetica,sans-serif">ay</text>
-      </svg>
-    </PCard>
-  );
-}
 
 function MaestroIcon() {
   return (
     <PCard>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
+      <svg viewBox="0 0 52 34" width="36" height="24" fill="none">
         <circle cx="19.5" cy="17" r="10" fill="#CC0000" />
         <circle cx="32.5" cy="17" r="10" fill="#0066CC" opacity="0.9" />
         <path d="M26 8.4a10 10 0 0 1 0 17.2A10 10 0 0 1 26 8.4z" fill="#6600AA" opacity="0.55" />
@@ -134,13 +105,13 @@ function MaestroIcon() {
 function ApplePayIcon() {
   return (
     <PCard bg="#000" noBorder>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
+      <svg viewBox="0 0 52 34" width="36" height="24" fill="none">
         {/* Apple logo path (simple-icons, 24×24 viewBox → scaled + translated) */}
         <g transform="translate(5, 6) scale(0.84)" fill="white">
           <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
         </g>
         <text x="40" y="22" textAnchor="middle" fill="white"
-          fontSize="10" fontFamily="'Helvetica Neue',Arial,sans-serif" fontWeight="300">
+          fontSize="13" fontFamily="'Helvetica Neue',Arial,sans-serif" fontWeight="300">
           Pay
         </text>
       </svg>
@@ -151,11 +122,11 @@ function ApplePayIcon() {
 function GooglePayIcon() {
   return (
     <PCard>
-      <svg viewBox="0 0 52 34" width="52" height="34" fill="none">
+      <svg viewBox="0 0 52 34" width="36" height="24" fill="none">
         <text x="16" y="23" textAnchor="middle" fill="#4285F4"
           fontSize="16" fontWeight="500" fontFamily="'Roboto',Arial,sans-serif">G</text>
         <text x="35" y="23" textAnchor="middle" fill="#5F6368"
-          fontSize="11" fontWeight="500" fontFamily="'Roboto',Arial,sans-serif">Pay</text>
+          fontSize="14" fontWeight="500" fontFamily="'Roboto',Arial,sans-serif">Pay</text>
       </svg>
     </PCard>
   );
@@ -166,11 +137,14 @@ function GooglePayIcon() {
 export default function Footer() {
   const t = useTranslations("footer");
   const year = new Date().getFullYear();
-  const [isSwiss, setIsSwiss] = useState(false);
+  // Default true — this is a Swiss store. Hide TWINT/PFPay only when
+  // the visitor has explicitly set EUR via a non-Swiss shipping address.
+  const [isSwiss, setIsSwiss] = useState(true);
 
   useEffect(() => {
     const raw = Cookies.get(CURRENCY_COOKIE);
-    setIsSwiss(parseCurrencyCookie(raw) === "CHF");
+    const currency = parseCurrencyCookie(raw);
+    if (currency === "EUR") setIsSwiss(false);
   }, []);
 
   const linkCls = "text-zinc-400 hover:text-green-400 transition-colors";
@@ -277,23 +251,21 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Bottom bar ────────────────────────────────────────────────────── */}
-        <div className="border-t border-[#2a2a2a] mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
-          <span className="shrink-0">{t("rights", { year })}</span>
-          <span className="shrink-0">Made with ☕ + {"{ }"} in 🇨🇭</span>
+        {/* ── Payment icons — above footer line, centered ─────────────────── */}
+        <div className="mt-10 flex items-center justify-center gap-1.5 flex-wrap">
+          {isSwiss && <TwintIcon />}
+          <VisaIcon />
+          <MastercardIcon />
+          <AmexIcon />
+          <MaestroIcon />
+          <ApplePayIcon />
+          <GooglePayIcon />
+        </div>
 
-          {/* Payment icons — TWINT + PF Pay only for Switzerland */}
-          <div className="flex items-center gap-1.5 flex-wrap justify-center sm:justify-end">
-            {isSwiss && <TwintIcon />}
-            {isSwiss && <PFPayIcon />}
-            <VisaIcon />
-            <MastercardIcon />
-            <AmexIcon />
-            <PayPalIcon />
-            <MaestroIcon />
-            <ApplePayIcon />
-            <GooglePayIcon />
-          </div>
+        {/* ── Bottom bar ────────────────────────────────────────────────────── */}
+        <div className="border-t border-[#2a2a2a] mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-600">
+          <span>{t("rights", { year })}</span>
+          <span>Made with ☕ + {"{ }"} in 🇨🇭</span>
         </div>
       </div>
     </footer>
