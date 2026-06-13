@@ -123,6 +123,14 @@
       "addresses": "Indirizzi",
       "signOut": "Disconnetti"
     },
+    "addresses": {
+      "title": "Indirizzi salvati",
+      "emptyNote": "Nessun indirizzo salvato. Gli indirizzi di spedizione vengono raccolti al checkout e salvati qui per uso futuro.",
+      "default": "predefinito",
+      "setDefault": "Imposta come predefinito",
+      "delete": "Elimina",
+      "checkoutNote": "// Gli indirizzi vengono salvati automaticamente al completamento di un checkout."
+    },
     "orders": {
       "title": "Storico ordini",
       "empty": "Nessun ordine ancora.",

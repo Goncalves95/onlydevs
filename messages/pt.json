@@ -123,6 +123,14 @@
       "addresses": "Moradas",
       "signOut": "Terminar sessão"
     },
+    "addresses": {
+      "title": "Moradas Guardadas",
+      "emptyNote": "Ainda sem moradas guardadas. As moradas de envio são recolhidas no checkout e guardadas aqui para uso futuro.",
+      "default": "padrão",
+      "setDefault": "Definir como padrão",
+      "delete": "Eliminar",
+      "checkoutNote": "// As moradas são guardadas automaticamente ao concluir um checkout."
+    },
     "orders": {
       "title": "Histórico de encomendas",
       "empty": "Ainda sem encomendas.",

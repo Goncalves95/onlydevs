@@ -123,6 +123,14 @@
       "addresses": "Adressen",
       "signOut": "Abmelden"
     },
+    "addresses": {
+      "title": "Gespeicherte Adressen",
+      "emptyNote": "Noch keine Adressen gespeichert. Lieferadressen werden beim Checkout erfasst und hier für zukünftige Verwendung gespeichert.",
+      "default": "Standard",
+      "setDefault": "Als Standard setzen",
+      "delete": "Löschen",
+      "checkoutNote": "// Adressen werden automatisch gespeichert, wenn du einen Checkout abschließt."
+    },
     "orders": {
       "title": "Bestellverlauf",
       "empty": "Noch keine Bestellungen.",

@@ -123,6 +123,14 @@
       "addresses": "Addresses",
       "signOut": "Sign out"
     },
+    "addresses": {
+      "title": "Saved Addresses",
+      "emptyNote": "No addresses saved yet. Shipping addresses are collected at checkout and saved here for future use.",
+      "default": "default",
+      "setDefault": "Set as default",
+      "delete": "Delete",
+      "checkoutNote": "// Addresses are saved automatically when you complete a checkout."
+    },
     "orders": {
       "title": "Order History",
       "empty": "No orders yet.",
