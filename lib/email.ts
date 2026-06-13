@@ -3,6 +3,9 @@ import type { Currency } from "@/lib/currency";
 import { renderOrderConfirmation, type OrderItem } from "@/lib/emails/order-confirmation";
 import { renderMagicLinkEmail } from "@/lib/emails/magic-link";
 import { renderWelcomeEmail } from "@/lib/emails/welcome";
+import { renderOrderShippedEmail, type ShippedItem } from "@/lib/emails/order-shipped";
+import { renderOrderDeliveredEmail } from "@/lib/emails/order-delivered";
+import { renderAccountDeletedEmail } from "@/lib/emails/account-deleted";
 
 let _resend: Resend | null = null;
 
@@ -119,4 +122,84 @@ export async function sendWelcomeEmail(opts: SendWelcomeEmailOptions) {
     ordersUrl: `${base}/en/account/orders`,
   });
   return dispatch({ to: opts.to, subject: "Welcome to OnlyDevs 👋", html, tag: "welcome" });
+}
+
+/* ── Order Shipped ──────────────────────────────────────────────────────── */
+
+export type { ShippedItem };
+
+interface SendOrderShippedOptions {
+  to: string;
+  orderId: string;
+  items: ShippedItem[];
+  carrier?: string | null;
+  trackingNumber?: string | null;
+  trackingUrl?: string | null;
+  locale?: string;
+}
+
+export async function sendOrderShippedEmail(opts: SendOrderShippedOptions) {
+  const { to, orderId, items, carrier, trackingNumber, trackingUrl, locale = "en" } = opts;
+  const base = APP_URL();
+  const html = await renderOrderShippedEmail({
+    orderId,
+    items,
+    carrier,
+    trackingNumber,
+    trackingUrl,
+    orderUrl: `${base}/${locale}/account/orders`,
+  });
+  return dispatch({
+    to,
+    subject: `📦 Your order #${orderId.slice(0, 8).toUpperCase()} has shipped!`,
+    html,
+    tag: "order-shipped",
+  });
+}
+
+/* ── Order Delivered ────────────────────────────────────────────────────── */
+
+interface DeliveredItem {
+  productName: string;
+  variantName?: string | null;
+  quantity: number;
+}
+
+interface SendOrderDeliveredOptions {
+  to: string;
+  orderId: string;
+  items: DeliveredItem[];
+  locale?: string;
+}
+
+export async function sendOrderDeliveredEmail(opts: SendOrderDeliveredOptions) {
+  const { to, orderId, items, locale = "en" } = opts;
+  const base = APP_URL();
+  const html = await renderOrderDeliveredEmail({
+    orderId,
+    items,
+    shopUrl: `${base}/${locale}/products`,
+  });
+  return dispatch({
+    to,
+    subject: `✅ Order #${orderId.slice(0, 8).toUpperCase()} delivered!`,
+    html,
+    tag: "order-delivered",
+  });
+}
+
+/* ── Account Deleted (GDPR) ─────────────────────────────────────────────── */
+
+interface SendAccountDeletedOptions {
+  to: string;
+}
+
+export async function sendAccountDeletedEmail(opts: SendAccountDeletedOptions) {
+  const html = await renderAccountDeletedEmail();
+  return dispatch({
+    to: opts.to,
+    subject: "Your OnlyDevs account has been deleted",
+    html,
+    tag: "account-deleted",
+  });
 }

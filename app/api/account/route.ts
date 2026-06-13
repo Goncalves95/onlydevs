@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth, signOut } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { sendAccountDeletedEmail } from "@/lib/email";
 
 export async function DELETE() {
   const session = await auth();
@@ -10,6 +11,13 @@ export async function DELETE() {
   const userId = session.user.id;
 
   console.log(`[gdpr] account deletion requested for user [redacted]`);
+
+  // Capture email BEFORE anonymising — we need it to send the confirmation
+  const userRecord = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { email: true },
+  });
+  const emailToNotify = userRecord?.email ?? null;
 
   // Run all anonymisation in a single transaction
   await prisma.$transaction([
@@ -43,6 +51,15 @@ export async function DELETE() {
     await signOut({ redirect: false });
   } catch {
     // signOut may throw if session is already gone — that's fine
+  }
+
+  // Send confirmation email — don't block deletion if this fails
+  if (emailToNotify) {
+    try {
+      await sendAccountDeletedEmail({ to: emailToNotify });
+    } catch (err) {
+      console.error("[gdpr] account-deleted email failed:", err);
+    }
   }
 
   return NextResponse.json({ ok: true });
