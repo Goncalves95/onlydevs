@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import { getTranslations } from "next-intl/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import AddressesPanel from "@/components/AddressesPanel";
 import type { Locale } from "@/lib/i18n/routing";
 
 interface Props {
@@ -29,6 +30,43 @@ export default async function AddressesPage({ params }: Props) {
     }),
   ]);
 
+  async function saveAddress(formData: FormData) {
+    "use server";
+    const id = (formData.get("id") as string | null) || null;
+    const line1 = ((formData.get("line1") as string) ?? "").trim();
+    const line2 = ((formData.get("line2") as string) ?? "").trim() || null;
+    const city = ((formData.get("city") as string) ?? "").trim();
+    const state = ((formData.get("state") as string) ?? "").trim() || null;
+    const postalCode = ((formData.get("postalCode") as string) ?? "").trim();
+    const country = ((formData.get("country") as string) ?? "").trim();
+
+    if (!line1 || !city || !postalCode || !country) return;
+
+    if (id) {
+      // Verify ownership before update
+      await prisma.address.updateMany({
+        where: { id, userId },
+        data: { line1, line2, city, state, postalCode, country },
+      });
+    } else {
+      // First address becomes the default automatically
+      const count = await prisma.address.count({ where: { userId } });
+      await prisma.address.create({
+        data: {
+          userId,
+          line1,
+          line2,
+          city,
+          state,
+          postalCode,
+          country,
+          isDefault: count === 0,
+        },
+      });
+    }
+    revalidatePath(`/${locale}/account/addresses`);
+  }
+
   async function deleteAddress(formData: FormData) {
     "use server";
     const id = formData.get("id") as string;
@@ -41,6 +79,9 @@ export default async function AddressesPage({ params }: Props) {
     "use server";
     const id = formData.get("id") as string;
     if (!id) return;
+    // Verify ownership before setting default
+    const addr = await prisma.address.findFirst({ where: { id, userId } });
+    if (!addr) return;
     await prisma.$transaction([
       prisma.address.updateMany({ where: { userId }, data: { isDefault: false } }),
       prisma.address.update({ where: { id }, data: { isDefault: true } }),
@@ -51,66 +92,19 @@ export default async function AddressesPage({ params }: Props) {
   return (
     <section className="space-y-8 max-w-lg">
       <h1 className="text-2xl font-bold">{t("title")}</h1>
-
-      {addresses.length === 0 ? (
-        <div className="border border-zinc-800 rounded-lg p-8 text-center">
-          <p className="font-mono text-xs text-green-600 mb-2">// no.addresses.saved</p>
-          <p className="text-zinc-400 text-sm leading-relaxed">{t("emptyNote")}</p>
-        </div>
-      ) : (
-        <ul className="space-y-4">
-          {addresses.map((addr) => (
-            <li
-              key={addr.id}
-              className="border border-zinc-800 rounded-lg p-5 space-y-3"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="text-sm text-zinc-300 leading-relaxed">
-                  <p>{addr.line1}</p>
-                  {addr.line2 && <p>{addr.line2}</p>}
-                  <p>
-                    {addr.city}
-                    {addr.state ? `, ${addr.state}` : ""} {addr.postalCode}
-                  </p>
-                  <p className="uppercase text-xs text-zinc-500 mt-0.5">{addr.country}</p>
-                </div>
-                {addr.isDefault && (
-                  <span className="shrink-0 text-[10px] font-mono border border-green-500/40 text-green-400 rounded px-2 py-0.5">
-                    {t("default")}
-                  </span>
-                )}
-              </div>
-
-              <div className="flex items-center gap-3 pt-1 border-t border-zinc-800">
-                {!addr.isDefault && (
-                  <form action={setDefault}>
-                    <input type="hidden" name="id" value={addr.id} />
-                    <button
-                      type="submit"
-                      className="text-xs text-zinc-400 hover:text-green-400 transition-colors"
-                    >
-                      {t("setDefault")}
-                    </button>
-                  </form>
-                )}
-                <form action={deleteAddress}>
-                  <input type="hidden" name="id" value={addr.id} />
-                  <button
-                    type="submit"
-                    className="text-xs text-zinc-500 hover:text-red-400 transition-colors"
-                  >
-                    {t("delete")}
-                  </button>
-                </form>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <p className="text-xs text-zinc-600 font-mono leading-relaxed">
-        {t("checkoutNote")}
-      </p>
+      <AddressesPanel
+        addresses={addresses}
+        onSave={saveAddress}
+        onDelete={deleteAddress}
+        onSetDefault={setDefault}
+        labels={{
+          emptyNote: t("emptyNote"),
+          defaultBadge: t("default"),
+          setDefault: t("setDefault"),
+          deleteLabel: t("delete"),
+          checkoutNote: t("checkoutNote"),
+        }}
+      />
     </section>
   );
 }
