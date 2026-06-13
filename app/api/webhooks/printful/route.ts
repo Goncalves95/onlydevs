@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { sendOrderShippedEmail, sendOrderDeliveredEmail } from "@/lib/email";
 
 interface PrintfulWebhookBody {
   type: string;
@@ -8,6 +9,7 @@ interface PrintfulWebhookBody {
       status: string;
       tracking_number?: string;
       tracking_url?: string;
+      shipments?: Array<{ carrier?: string }>;
     };
   };
 }
@@ -29,23 +31,58 @@ export async function POST(req: Request) {
       });
       break;
 
-    case "order_shipped":
-      await prisma.order.update({
+    case "order_shipped": {
+      const shippedOrder = await prisma.order.update({
         where: { id: externalOrderId },
         data: {
           status: "SHIPPED",
           trackingNumber: data.order.tracking_number ?? null,
           trackingUrl: data.order.tracking_url ?? null,
         },
+        include: {
+          user: { select: { email: true } },
+          items: { select: { productName: true, variantName: true, quantity: true } },
+        },
       });
+      if (shippedOrder.user?.email) {
+        try {
+          await sendOrderShippedEmail({
+            to: shippedOrder.user.email,
+            orderId: shippedOrder.id,
+            items: shippedOrder.items,
+            carrier: data.order.shipments?.[0]?.carrier ?? null,
+            trackingNumber: data.order.tracking_number ?? null,
+            trackingUrl: data.order.tracking_url ?? null,
+          });
+        } catch (err) {
+          console.error("[webhook] order-shipped email failed:", err);
+        }
+      }
       break;
+    }
 
-    case "order_delivered":
-      await prisma.order.update({
+    case "order_delivered": {
+      const deliveredOrder = await prisma.order.update({
         where: { id: externalOrderId },
         data: { status: "DELIVERED" },
+        include: {
+          user: { select: { email: true } },
+          items: { select: { productName: true, variantName: true, quantity: true } },
+        },
       });
+      if (deliveredOrder.user?.email) {
+        try {
+          await sendOrderDeliveredEmail({
+            to: deliveredOrder.user.email,
+            orderId: deliveredOrder.id,
+            items: deliveredOrder.items,
+          });
+        } catch (err) {
+          console.error("[webhook] order-delivered email failed:", err);
+        }
+      }
       break;
+    }
 
     default:
       break;
