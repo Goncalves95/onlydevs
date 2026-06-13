@@ -123,6 +123,14 @@
       "addresses": "Adresses",
       "signOut": "Se déconnecter"
     },
+    "addresses": {
+      "title": "Adresses enregistrées",
+      "emptyNote": "Aucune adresse enregistrée. Les adresses de livraison sont collectées lors du paiement et sauvegardées ici pour une utilisation future.",
+      "default": "défaut",
+      "setDefault": "Définir par défaut",
+      "delete": "Supprimer",
+      "checkoutNote": "// Les adresses sont enregistrées automatiquement lors d'un paiement complété."
+    },
     "orders": {
       "title": "Historique des commandes",
       "empty": "Aucune commande pour l'instant.",
