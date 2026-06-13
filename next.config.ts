@@ -35,6 +35,14 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   // Prevent Prisma + pg from being bundled for the browser
   serverExternalPackages: ["@prisma/adapter-pg", "pg", "pg-native"],
+  redirects: async () => [
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "onlydevs.shop" }],
+      destination: "https://www.onlydevs.shop/:path*",
+      permanent: true,
+    },
+  ],
   headers: async () => [
     {
       source: "/(.*)",
