@@ -17,8 +17,16 @@ interface Props {
   params: Promise<{ locale: Locale; slug: string }>;
 }
 
+const OG_LOCALE: Record<string, string> = {
+  en: "en_US",
+  de: "de_DE",
+  fr: "fr_FR",
+  it: "it_IT",
+  pt: "pt_PT",
+};
+
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const id = getProductIdFromSlug(slug);
   if (!id) return {};
 
@@ -26,22 +34,40 @@ export async function generateMetadata({ params }: Props) {
     const detail = await getCachedProduct(id);
     if (!detail) return {};
     const { sync_product } = detail;
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.onlydevs.shop";
+    const canonical = `${appUrl}/${locale}/products/${slug}`;
 
-    // Build hreflang alternates for all 5 locales
-    const alternates = {
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [
-          l,
-          `${appUrl}/${l}/products/${slug}`,
-        ])
-      ),
-    };
+    const rawDesc = `Buy ${sync_product.name} at OnlyDevs — premium developer merch shipped across Switzerland and Europe.`;
+    const description = rawDesc.length > 160 ? rawDesc.slice(0, 157) + "…" : rawDesc;
+
+    const images = sync_product.thumbnail_url
+      ? [{ url: sync_product.thumbnail_url, width: 800, height: 800, alt: sync_product.name }]
+      : [];
 
     return {
       title: sync_product.name,
-      description: `Buy ${sync_product.name} at OnlyDevs — merch for developers.`,
-      alternates,
+      description,
+      alternates: {
+        canonical,
+        languages: Object.fromEntries(
+          routing.locales.map((l) => [l, `${appUrl}/${l}/products/${slug}`])
+        ),
+      },
+      openGraph: {
+        title: `${sync_product.name} | OnlyDevs`,
+        description,
+        url: canonical,
+        siteName: "OnlyDevs",
+        type: "website",
+        locale: OG_LOCALE[locale] ?? "en_US",
+        images,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${sync_product.name} | OnlyDevs`,
+        description,
+        images: images.map((img) => img.url),
+      },
     };
   } catch {
     return {};
@@ -75,7 +101,33 @@ export default async function ProductDetailPage({ params }: Props) {
     sync_variants[0]?.files.find((f) => f.type === "preview")?.preview_url ??
     sync_product.thumbnail_url;
 
+  const lowestVariantPrice = sync_variants[0]?.retail_price;
+  const variantCurrency = sync_variants[0]?.currency ?? "CHF";
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: sync_product.name,
+    image: primaryImage ?? undefined,
+    description: `Developer merch from OnlyDevs — ${sync_product.name}. Ships across Switzerland and Europe.`,
+    brand: { "@type": "Brand", name: "OnlyDevs" },
+    ...(lowestVariantPrice && {
+      offers: {
+        "@type": "Offer",
+        price: lowestVariantPrice,
+        priceCurrency: variantCurrency,
+        availability: "https://schema.org/InStock",
+        seller: { "@type": "Organization", name: "OnlyDevs" },
+      },
+    }),
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <main className="max-w-5xl mx-auto px-6 py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Product image */}
@@ -122,5 +174,6 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </div>
     </main>
+    </>
   );
 }

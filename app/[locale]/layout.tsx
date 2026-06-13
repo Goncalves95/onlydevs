@@ -18,15 +18,43 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL ?? "https://www.onlydevs.shop"
+  ),
   title: {
     default: "OnlyDevs — Merch for Developers",
     template: "%s | OnlyDevs",
   },
   description:
-    "Tech merch and accessories for developers and DevOps engineers. Ships across Switzerland and Europe.",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
-  ),
+    "Premium apparel and accessories for developers, DevOps engineers and infrastructure nerds. Shipping across Switzerland and Europe.",
+  keywords: [
+    "developer merch",
+    "programmer t-shirts",
+    "devops apparel",
+    "tech accessories",
+    "coding hoodies",
+    "developer gifts",
+    "programmer hoodie",
+    "Switzerland tech merch",
+  ],
+  authors: [{ name: "OnlyDevs" }],
+  robots: { index: true, follow: true },
+  openGraph: {
+    siteName: "OnlyDevs",
+    type: "website",
+    images: [
+      {
+        url: "/onlydevs_logo.png",
+        width: 200,
+        height: 56,
+        alt: "OnlyDevs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@onlydevs_shop",
+  },
 };
 
 export function generateStaticParams() {
