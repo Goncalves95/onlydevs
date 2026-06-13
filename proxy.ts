@@ -45,10 +45,12 @@ export default auth(async function proxy(req: NextRequest & { auth: unknown }) {
     return NextResponse.next();
   }
 
-  // ── 2. Skip static assets ─────────────────────────────────────────────────
+  // ── 2. Skip static assets and SEO routes ─────────────────────────────────
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon") ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt" ||
     /\.(?:svg|png|jpg|jpeg|gif|webp|ico|woff2?)$/.test(pathname)
   ) {
     return NextResponse.next();
@@ -90,6 +92,6 @@ export default auth(async function proxy(req: NextRequest & { auth: unknown }) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 };
