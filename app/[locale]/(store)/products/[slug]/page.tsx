@@ -18,7 +18,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { locale, slug } = await params;
+  const { slug } = await params;
   const id = getProductIdFromSlug(slug);
   if (!id) return {};
 
