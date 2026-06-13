@@ -219,7 +219,9 @@
     "newsletterDesc": "Erfahre als Erster von neuen Drops.",
     "newsletterPlaceholder": "du@beispiel.com",
     "newsletterCta": "Abonnieren",
-    "newsletterNote": "Kein Spam. Jederzeit abmeldbar."
+    "newsletterNote": "Kein Spam. Jederzeit abmeldbar.",
+    "newsletterSuccess": "Erfolgreich abonniert!",
+    "newsletterError": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
   },
   "gdpr": {
     "message": "Wir verwenden nur essenzielle Cookies, damit der Shop funktioniert. Kein Tracking, keine Werbung.",
@@ -253,5 +255,17 @@
     "contactTitle": "Kontakt aufnehmen",
     "contactText": "Feature-Wunsch, Bug-Meldung oder einfach Hallo sagen? Wir lesen jede Nachricht.",
     "shopCta": "Produkte ansehen →"
+  },
+  "faq": {
+    "metaTitle": "FAQ",
+    "metaDesc": "Antworten auf häufig gestellte Fragen zu Bestellungen, Versand und OnlyDevs-Produkten."
+  },
+  "shipping": {
+    "metaTitle": "Versand & Rückgaben",
+    "metaDesc": "Versandinformationen und Rückgaberichtlinie für OnlyDevs-Bestellungen."
+  },
+  "sizeGuide": {
+    "metaTitle": "Größentabelle",
+    "metaDesc": "Größentabellen für OnlyDevs T-Shirts und Hoodies."
   }
 }

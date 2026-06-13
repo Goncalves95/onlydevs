@@ -219,7 +219,9 @@
     "newsletterDesc": "Ricevi una notifica quando escono nuovi drop.",
     "newsletterPlaceholder": "tu@esempio.com",
     "newsletterCta": "Iscriviti",
-    "newsletterNote": "Niente spam. Cancellati quando vuoi."
+    "newsletterNote": "Niente spam. Cancellati quando vuoi.",
+    "newsletterSuccess": "Sei iscritto/a!",
+    "newsletterError": "Qualcosa è andato storto. Riprova."
   },
   "gdpr": {
     "message": "Utilizziamo solo cookie essenziali per il funzionamento del negozio. Nessun tracciamento, nessuna pubblicità.",
@@ -253,5 +255,17 @@
     "contactTitle": "Contattaci",
     "contactText": "Hai una richiesta di funzionalità, un bug da segnalare o vuoi semplicemente salutare? Leggiamo ogni messaggio.",
     "shopCta": "Sfoglia i prodotti →"
+  },
+  "faq": {
+    "metaTitle": "FAQ",
+    "metaDesc": "Risposte alle domande frequenti su ordini, spedizioni e prodotti OnlyDevs."
+  },
+  "shipping": {
+    "metaTitle": "Spedizione e Resi",
+    "metaDesc": "Informazioni sulla spedizione e la politica di reso di OnlyDevs."
+  },
+  "sizeGuide": {
+    "metaTitle": "Guida alle Taglie",
+    "metaDesc": "Tabelle delle taglie per t-shirt e felpe OnlyDevs."
   }
 }

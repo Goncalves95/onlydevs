@@ -225,9 +225,9 @@ export default function Footer() {
               {t("supportTitle")}
             </h3>
             <ul className="space-y-2 text-sm">
-              <li><ComingSoon label={t("faq")} t={t} /></li>
-              <li><ComingSoon label={t("shippingReturns")} t={t} /></li>
-              <li><ComingSoon label={t("sizeGuide")} t={t} /></li>
+              <li><Link href="/faq" className={linkCls}>{t("faq")}</Link></li>
+              <li><Link href="/shipping" className={linkCls}>{t("shippingReturns")}</Link></li>
+              <li><Link href="/size-guide" className={linkCls}>{t("sizeGuide")}</Link></li>
               <li>
                 <a href="mailto:onlydevs.shop@gmail.com" className={linkCls}>
                   {t("contact")}

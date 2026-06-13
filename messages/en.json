@@ -226,7 +226,9 @@
     "newsletterDesc": "Get notified when new drops go live.",
     "newsletterPlaceholder": "your@email.com",
     "newsletterCta": "Subscribe",
-    "newsletterNote": "No spam. Unsubscribe anytime."
+    "newsletterNote": "No spam. Unsubscribe anytime.",
+    "newsletterSuccess": "You're subscribed!",
+    "newsletterError": "Something went wrong. Please try again."
   },
   "about": {
     "metaTitle": "About — OnlyDevs",
@@ -253,5 +255,17 @@
     "contactTitle": "Get in Touch",
     "contactText": "Got a feature request, a bug report, or just want to say hi? We read every message.",
     "shopCta": "Browse products →"
+  },
+  "faq": {
+    "metaTitle": "FAQ",
+    "metaDesc": "Answers to frequently asked questions about orders, shipping and OnlyDevs products."
+  },
+  "shipping": {
+    "metaTitle": "Shipping & Returns",
+    "metaDesc": "Shipping information and return policy for OnlyDevs orders."
+  },
+  "sizeGuide": {
+    "metaTitle": "Size Guide",
+    "metaDesc": "Size charts for OnlyDevs t-shirts and hoodies."
   }
 }

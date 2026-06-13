@@ -125,3 +125,12 @@ enum Role {
   CUSTOMER
   ADMIN
 }
+
+// ─── Newsletter ───────────────────────────────────────────────────────────────
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  locale    String   @default("en")
+}

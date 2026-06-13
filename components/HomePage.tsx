@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
@@ -20,14 +21,41 @@ interface Props {
 
 type Phase = "cursor" | "typing" | "showing";
 
+type NewsletterStatus = "idle" | "loading" | "success" | "error";
+
 export default function HomePage({ featured, currency }: Props) {
   const t = useTranslations("home");
   const tp = useTranslations("products");
   const contentRef = useRef<HTMLElement>(null);
   const startRef = useRef(0);
+  const params = useParams();
+  const locale = (params?.locale as string) ?? "en";
 
   const [typed, setTyped] = useState("");
   const [phase, setPhase] = useState<Phase>("cursor");
+  const [email, setEmail] = useState("");
+  const [nlStatus, setNlStatus] = useState<NewsletterStatus>("idle");
+
+  const handleNewsletter = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || nlStatus === "loading") return;
+    setNlStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, locale }),
+      });
+      if (res.ok) {
+        setNlStatus("success");
+        setEmail("");
+      } else {
+        setNlStatus("error");
+      }
+    } catch {
+      setNlStatus("error");
+    }
+  }, [email, locale, nlStatus]);
 
   useEffect(() => {
     startRef.current = Date.now();
@@ -247,22 +275,40 @@ export default function HomePage({ featured, currency }: Props) {
             <p className="font-mono text-sm text-zinc-500 mb-6">
               {t("newsletterDesc")}
             </p>
-            <form onSubmit={(e) => e.preventDefault()} className="flex gap-3 max-w-md">
-              <input
-                type="email"
-                placeholder={t("newsletterPlaceholder")}
-                className="flex-1 bg-zinc-900 border border-zinc-700 rounded-md px-4 py-2.5 text-sm font-mono text-zinc-300 placeholder:text-zinc-600 focus:outline-none focus:border-green-500 transition-colors"
-              />
-              <button
-                type="submit"
-                className="bg-green-500 hover:bg-green-400 text-black font-bold px-5 py-2.5 rounded-md text-sm transition-colors whitespace-nowrap"
-              >
-                {t("newsletterCta")}
-              </button>
-            </form>
-            <p className="font-mono text-xs text-zinc-700 mt-3">
-              {t("newsletterNote")}
-            </p>
+            {nlStatus === "success" ? (
+              <p className="font-mono text-sm text-green-400 py-2">
+                ✓ {t("newsletterSuccess")}
+              </p>
+            ) : (
+              <form onSubmit={handleNewsletter} className="flex gap-3 max-w-md">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t("newsletterPlaceholder")}
+                  disabled={nlStatus === "loading"}
+                  className="flex-1 bg-zinc-900 border border-zinc-700 rounded-md px-4 py-2.5 text-sm font-mono text-zinc-300 placeholder:text-zinc-600 focus:outline-none focus:border-green-500 transition-colors disabled:opacity-50"
+                />
+                <button
+                  type="submit"
+                  disabled={nlStatus === "loading"}
+                  className="bg-green-500 hover:bg-green-400 text-black font-bold px-5 py-2.5 rounded-md text-sm transition-colors whitespace-nowrap disabled:opacity-50"
+                >
+                  {nlStatus === "loading" ? "…" : t("newsletterCta")}
+                </button>
+              </form>
+            )}
+            {nlStatus === "error" && (
+              <p className="font-mono text-xs text-red-400 mt-2">
+                {t("newsletterError")}
+              </p>
+            )}
+            {nlStatus !== "success" && (
+              <p className="font-mono text-xs text-zinc-700 mt-3">
+                {t("newsletterNote")}
+              </p>
+            )}
           </div>
         </div>
       </section>

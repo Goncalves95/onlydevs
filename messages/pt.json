@@ -219,7 +219,9 @@
     "newsletterDesc": "Sê o primeiro a saber quando há novidades.",
     "newsletterPlaceholder": "o.teu@email.com",
     "newsletterCta": "Subscrever",
-    "newsletterNote": "Sem spam. Cancela quando quiseres."
+    "newsletterNote": "Sem spam. Cancela quando quiseres.",
+    "newsletterSuccess": "Subscrito com sucesso!",
+    "newsletterError": "Algo correu mal. Por favor, tenta novamente."
   },
   "gdpr": {
     "message": "Usamos apenas cookies essenciais para o funcionamento da loja. Sem rastreamento, sem publicidade.",
@@ -253,5 +255,17 @@
     "contactTitle": "Entra em Contacto",
     "contactText": "Tens um pedido de funcionalidade, um bug ou simplesmente queres dizer olá? Lemos todas as mensagens.",
     "shopCta": "Ver produtos →"
+  },
+  "faq": {
+    "metaTitle": "FAQ",
+    "metaDesc": "Respostas às perguntas frequentes sobre encomendas, envio e produtos OnlyDevs."
+  },
+  "shipping": {
+    "metaTitle": "Envio e Devoluções",
+    "metaDesc": "Informações sobre envio e política de devoluções da OnlyDevs."
+  },
+  "sizeGuide": {
+    "metaTitle": "Guia de Tamanhos",
+    "metaDesc": "Tabelas de tamanhos para t-shirts e sweats OnlyDevs."
   }
 }

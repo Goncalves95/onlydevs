@@ -11,6 +11,7 @@ import { parseCurrencyCookie, getDefaultCurrency, CURRENCY_COOKIE } from "@/lib/
 import NavbarWrapper from "@/components/NavbarWrapper";
 import FooterWrapper from "@/components/FooterWrapper";
 import CookieBanner from "@/components/CookieBanner";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import type { Locale } from "@/lib/i18n/routing";
 import "../globals.css";
 
@@ -121,6 +122,7 @@ export default async function LocaleLayout({
             {children}
             <FooterWrapper />
             <CookieBanner />
+            <GoogleAnalytics />
           </NextIntlClientProvider>
         </SessionProvider>
       </body>
