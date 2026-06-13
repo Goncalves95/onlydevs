@@ -75,6 +75,14 @@ export async function generateMetadata({
       card: "summary_large_image",
       site: "@onlydevs_shop",
     },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+        { url: "/icon.svg", type: "image/svg+xml" },
+      ],
+      apple: "/apple-icon",
+      shortcut: "/favicon.ico",
+    },
   };
 }
 
